@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to train computer vision · Jack Ai-Leung</title>
+  <meta name="description" content="Why computer vision still hasn't had its GPT moment, and why the real prize may be sitting in the data rather than the model.">
+  <meta property="og:title" content="How to train computer vision">
+  <meta property="og:description" content="Why vision is still waiting for its GPT moment, and why data dictates the architecture.">
+  <meta property="og:type" content="article">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main class="wrap">
+
+    <nav class="post-nav"><a href="../index.html">← Jack</a></nav>
+
+    <header class="post-head">
+      <p class="post-meta">Writings · July 11, 2026</p>
+      <h1>How to train computer vision</h1>
+    </header>
+
+    <article class="article">
+      <p>Language had it easy. One architecture won, and everything after was a scaling problem: more data, more compute, better answers. Computer vision never got that clean break. It has ten competing recipes and no champion, and not one of them can reliably walk into a scene it has never seen before and just work.</p>
+
+      <p>That gap is the whole story. On the first episode of Embodied HQ, Max Sebti of Manako Labs makes the claim that stuck with me: the thing that decides the winner is not the model at all.</p>
+
+      <h2>Start with the data problem</h2>
+
+      <p>The problem starts with a hard physical limit. You cannot pipe video from every camera, all day, to a data center and run a large model over it. The bandwidth does not exist, the bill is absurd, and the lag kills anything that has to act in the moment. The model therefore has to live where the camera lives, and in practice that means something tiny, on the order of a 19MB model running on the device itself.</p>
+
+      <p>Once you accept that constraint, the whole design space snaps into focus. The question stops being which architecture is most capable and becomes which capable thing actually fits on a camera and answers in real time. Sebti's line for it is that data does not just train the model, it dictates the architecture. The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
+
+      <p>Most of the field has this backwards. It treats the architecture as the interesting decision and the data as the boring input you shovel in. On-device vision flips the order. The physics of where the data lives comes first, and the model is whatever you can fit inside it.</p>
+
+      <h2>Two bets on world models</h2>
+
+      <p>To understand a scene instead of just labeling it, a system needs a world model, some internal sense of what is happening and what comes next. Two camps disagree on how to build one:</p>
+
+      <ul>
+        <li>Predictive, in the JEPA lineage. It learns to anticipate the next state in a compressed, abstract space, never drawing the future, only seeing it coming.</li>
+        <li>Generative. It predicts the world frame by frame, effectively rendering what happens next in pixels.</li>
+      </ul>
+
+      <p>Generative demos are the ones that go viral, because you can watch them work. But for a model that has to run on a camera, the predictive approach is cheaper, and a lot more honest about what you can actually afford.</p>
+
+      <h2>The "deliberate Frankenstein"</h2>
+
+      <p>Here is the part I liked most. Manako's system refuses to be pure. It isn't one elegant model. Sebti cheerfully calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job well.</p>
+
+      <p>That is an engineer's answer, not a researcher's. It admits that no single approach is good enough yet, and that shipping something real means assembling the parts that each earn their keep. In a field still waiting for its one big idea, the winning move is to combine what works today instead of holding out for what might work tomorrow.</p>
+
+      <h2>Why the data layer is the durable position</h2>
+
+      <p>The last piece is the business argument, and it travels well beyond vision. Models are getting commoditized. The durable position is the data. And you do not buy your way into the right data. You earn it by deploying systems that work.</p>
+
+      <blockquote>
+        Access is won in the field, and then it compounds.
+        <cite>Max Sebti, Manako Labs</cite>
+      </blockquote>
+
+      <p>The loop is easy to describe and brutal to copy. A team deploys a working system into a real environment, and that deployment earns it access to a camera network. That network then supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces still more data. Whoever gets that flywheel spinning first builds a lead that a better model, showing up late, cannot simply purchase.</p>
+
+      <p>This brings the argument back to where it started. Vision may still be waiting for its GPT moment, the single recipe that turns everything after it into a scaling exercise. The more useful read is that the winners will not be whoever finds that recipe. They will be whoever already owns the data pipeline it would need, and that is a position a team takes by shipping rather than by waiting.</p>
+
+      <div class="source-note">
+        Source. These are my notes on the first episode of <a href="https://embodiedhq.io/episode-01.html" target="_blank" rel="noopener">Embodied HQ</a>, a conversation with Max Sebti of Manako Labs. The quotes are his; the framing and any mistakes are mine. Listen to the full episode for the detail I skipped.
+      </div>
+    </article>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Source Algorithms · Jack Ai-Leung</title>
+  <meta name="description" content="Why open weights is not open source, and why the algorithm layer beneath AI models may be the most important thing to keep open. A conversation with John Fletcher of the Innovation Game.">
+  <meta property="og:title" content="Open Source Algorithms">
+  <meta property="og:description" content="Open weights is not open source. The algorithm layer beneath the models is what matters.">
+  <meta property="og:type" content="article">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main class="wrap">
+
+    <nav class="post-nav"><a href="../index.html">← Jack</a></nav>
+
+    <header class="post-head">
+      <p class="post-meta">Writings · May 10, 2026</p>
+      <h1>Open Source Algorithms</h1>
+    </header>
+
+    <article class="article">
+      <p>The word open is doing a lot of quiet work in AI right now. When a lab releases a model you can download and run yourself, everyone calls it open source, and the distinction that John Fletcher of the <a href="https://tig.foundation/" target="_blank" rel="noopener">Innovation Game</a> keeps hammering is that this is not what open source means. You can run the model, and you can even see its weights, but you cannot see the thing that produced it. That difference is the whole argument.</p>
+
+      <h2>Open weights is one thing, open source is another</h2>
+
+      <p>A model like DeepSeek or Qwen is locally deployable and open-weight, which means you can hold the finished artifact in your hands. What you cannot do is look underneath it. The source, in Fletcher's sense, is the set of algorithmic methods and the data that get processed into those weights. Without the source, you can tune a model at the edges and make it a little better at one thing and worse at another, but you cannot build on it in the way that actually compounds. Open source is the ability to take someone's work, understand exactly how it functions, and make something strictly better that the next person can then improve again.</p>
+
+      <p>His analogy is the one that lands. Linux is not the best open-source operating system, it is the best operating system, full stop, because thousands of people can read the source and build on each other's work until no closed competitor can keep up. Fletcher's bet is that AI can go the same way, but only if the source underneath the models is actually open.</p>
+
+      <h2>The algorithm is the source</h2>
+
+      <p>The Innovation Game runs competitions to develop better algorithms, and the key word is algorithms rather than models. These are interpretable, white-box methods, closer to equations than to giant matrices of inscrutable weights. Because you can read them, you can understand exactly how they work, and then you can propose a better idea on top. That is the old-fashioned meaning of open source, where you have the C code rather than just the compiled binary of ones and zeros. Models sit at the top of the stack, and the algorithms that turn data into models sit beneath them, which is why Fletcher argues the algorithm layer is the one that has to stay open.</p>
+
+      <h2>A best-in-the-world result, not a best-in-crypto one</h2>
+
+      <p>The proof point he is most excited about is a routing problem, capacitated vehicle routing with time windows, which is the maths behind moving anything through space to hit the right places within the right time windows. It matters enormously in logistics and robotics, and a submission to the Innovation Game recently set a new state of the art by what he says is the largest single margin in the problem's history. His framing is deliberate: this is not the best algorithm produced in a decentralized way, it is the best one that exists anywhere.</p>
+
+      <p>The value is concrete. Fletcher estimates that a fraction of a percent of improvement on this problem is worth roughly $300 million a year to Amazon alone, just on deliveries. The record-setter built on earlier submissions from the very competitors who had been trying to beat him, and some of those competitors appear to have used AI, which is exactly the collaborative, man-and-machine dynamic that open development is supposed to produce.</p>
+
+      <h2>How you actually monetize an algorithm</h2>
+
+      <p>For most of history you could not sell an algorithm directly, so people sold the implementation instead. A researcher would publish a method in a journal, and a company that wanted it would pay a consultancy to code and customize it. The Innovation Game adds a license fee for the algorithm itself, which sounds small but is the part nobody could make work before. Enforcement runs on reputation rather than litigation, the same way the open-source community polices Linux, because infringing a project the community believes in carries a social cost that infringing a corporate patent does not. Fletcher's deeper point is that open source historically had no money flowing through it, and patents and GPUs both cost money, so an open project with real monetary flows can suddenly use instruments that pure volunteer efforts never could.</p>
+
+      <h2>Why open can beat a giant</h2>
+
+      <p>The obvious objection is that an individual cannot outspend Amazon. Fletcher's answer rests on two points:</p>
+
+      <ul>
+        <li>Even the largest companies underfund pure research, because the returns are uncertain and they prefer safer, lower-variance bets.</li>
+        <li>Closed work cannot compound the way open work does. When a private team invents something better, nobody outside can see it or build on it, whereas rewarding open publication and letting others build on top coordinates researchers worldwide into a single accelerating effort.</li>
+      </ul>
+
+      <p>That is the same reason Linux pulled away from Windows and never looked back. The stakes, in his telling, are higher this time, because algorithms sit at the very bottom of the stack, at the level of mathematics, and whoever controls that layer controls a great deal above it. If open source does not win, a single private entity ends up holding the most capable intelligence in the world, which is why he thinks keeping the source open matters more for AI than it ever did for operating systems.</p>
+
+      <div class="source-note">
+        Source. From my conversation with John Fletcher of the <a href="https://tig.foundation/" target="_blank" rel="noopener">Innovation Game</a> on <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Supercycle</a>. Figures and claims are his; the framing and any errors are mine.
+      </div>
+    </article>
+
+  </main>
+</body>
+</html>

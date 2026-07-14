@@ -1,0 +1,236 @@
+/* ============================================================
+   Jack, personal site
+   Forked from the andyzeng.github.io academic template:
+   two-column masthead, rule dividers, blue/orange link colors.
+   Body type set in Times New Roman on white per Jack's request.
+   ============================================================ */
+
+:root {
+  --bg:        #ffffff;
+  --ink:       #111111;
+  --ink-soft:  #333333;
+  --ink-faint: #6a6a6a;
+  --line:      #dddddd;
+  --link:      #1772d0;   /* legible link blue */
+  --link-hov:  #0d2749;   /* darker blue on hover */
+  --max:       50rem;
+  --serif: 'Times New Roman', Times, Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem) 1.5rem 4.5rem;
+}
+
+/* ---------- Links ---------- */
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hov); text-decoration: none; }
+
+/* ---------- Masthead (two-column: bio left, photo right) ---------- */
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+}
+.masthead .intro { flex: 1 1 auto; min-width: 0; }
+.masthead h1 {
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 2.9rem);
+  line-height: 1.05;
+  margin: 0 0 0.2rem;
+}
+.masthead .role {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.9rem;
+}
+.masthead .role a { color: var(--link); }
+.masthead .role a:hover { color: var(--link-hov); }
+.masthead .links { margin-top: 1.05rem; }
+.masthead .photo {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  background: #f2f2f2;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.masthead .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- Section headers with rule ---------- */
+section { margin-top: 1.8rem; }
+.section-label {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+}
+
+.prose p { margin: 0 0 0.9rem; color: var(--ink); }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { font-weight: 700; }
+.list-lead { margin: 0 0 0.4rem; color: var(--ink); }
+
+/* ---------- Bulleted lists (portfolio + prose) ---------- */
+.bullets { margin: 0.2rem 0 0; padding-left: 1.25rem; }
+.bullets li { margin: 0 0 0.4rem; }
+.bullets .b-name { font-weight: 400; }
+.bullets .b-name a { color: var(--link); }
+.bullets .b-name a:hover { color: var(--link-hov); }
+
+/* ---------- Contact / links row ---------- */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.4rem;
+  font-size: 1.05rem;
+}
+.links a { display: inline-flex; align-items: center; gap: 0.4rem; }
+.links svg { width: 16px; height: 16px; flex: 0 0 auto; }
+
+/* ---------- Company / venture lists ---------- */
+.holdings { list-style: none; margin: 0.2rem 0 0; padding: 0; }
+.holdings li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.4rem 0;
+}
+.holdings .h-name { font-weight: 700; }
+.holdings .h-name a { color: var(--link); }
+.holdings .h-name a:hover { color: var(--link-hov); }
+.holdings .h-desc { color: var(--ink-soft); font-weight: 400; }
+.holdings .h-role {
+  flex: 0 0 auto;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* ---------- Writings list ---------- */
+.posts { list-style: none; margin: 0; padding: 0; }
+.posts a.post-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 0.55rem 0;
+}
+.posts .post-main { display: flex; flex-direction: column; gap: 0.12rem; }
+.posts .post-title { font-size: 1.1rem; }
+.posts .post-dek { font-size: 0.9rem; color: var(--ink-faint); line-height: 1.35; }
+.posts .post-date {
+  flex: 0 0 auto;
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* ---------- Footer ---------- */
+.site-foot {
+  margin-top: 3rem;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+}
+
+/* ============================================================
+   Post pages
+   ============================================================ */
+.post-nav { margin-bottom: 1.8rem; font-size: 1rem; }
+
+.post-head { margin-bottom: 1.7rem; }
+.post-head .post-meta {
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  margin: 0 0 0.6rem;
+}
+.post-head h1 {
+  font-weight: 700;
+  font-size: clamp(1.95rem, 4.5vw, 2.5rem);
+  line-height: 1.12;
+  margin: 0 0 0.5rem;
+}
+.post-head .standfirst {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.42;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.article { font-size: 1.06rem; line-height: 1.6; }
+.article h2 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin: 2rem 0 0.6rem;
+}
+.article p { margin: 0 0 1.1rem; }
+.article ul { margin: 0 0 1.1rem; padding-left: 1.3rem; }
+.article li { margin: 0 0 0.4rem; }
+.article a { text-decoration: underline; }
+
+.article blockquote {
+  margin: 1.2rem 0;
+  padding-left: 1.5rem;
+  color: var(--ink);
+}
+.article blockquote cite {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+}
+
+/* ---------- Figures / visualizations ---------- */
+.figure { margin: 1.9rem 0; }
+.figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.figure figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+.source-note {
+  margin-top: 2rem;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 620px) {
+  body { font-size: 18px; }
+  .masthead { flex-direction: column-reverse; align-items: flex-start; gap: 1rem; }
+  .masthead .photo { width: 150px; height: 150px; }
+  .holdings li,
+  .posts a.post-link { flex-direction: column; gap: 0.1rem; }
+  .holdings .h-role { font-size: 0.88rem; }
+}
