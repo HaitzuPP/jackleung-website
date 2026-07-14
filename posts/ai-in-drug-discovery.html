@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI in Drug Discovery · Jack Ai-Leung</title>
-  <meta name="description" content="How Nova runs early-stage drug discovery as a decentralized competition on Bittensor, and why the search problem beneath it is bigger than it looks. A conversation with Micaela of Nova.">
+  <meta name="description" content="How Nova runs early-stage drug discovery as a decentralized competition on Bittensor, and why the search problem beneath it is bigger than it looks.">
   <meta property="og:title" content="AI in Drug Discovery">
   <meta property="og:description" content="Running early-stage drug discovery as a decentralized competition, and the search problem beneath it.">
   <meta property="og:type" content="article">
@@ -21,11 +21,11 @@
     </header>
 
     <article class="article">
-      <p>Big pharma spends millions of dollars and many years hunting for the molecules that might treat a disease, and most of that hunt is a search problem hidden inside a laboratory. Nova, the project Micaela co-founded, turns that search into a public competition on <a href="https://www.bittensor.com/" target="_blank" rel="noopener">Bittensor</a>. Miners submit molecule candidates and search strategies, validators score them against a reference model, and the best submissions get rewarded. The compute is effectively cost-neutral to Nova, because each miner brings their own machine and only the winner gets paid.</p>
+      <p>Big pharma spends millions of dollars and many years hunting for the molecules that might treat a disease, and most of that hunt is a search problem hidden inside a laboratory. Nova turns that search into a public competition on <a href="https://www.bittensor.com/" target="_blank" rel="noopener">Bittensor</a>. Miners submit molecule candidates and search strategies, validators score them against a reference model, and the best submissions get rewarded. The compute is effectively cost-neutral to Nova, because each miner brings their own machine and only the winner gets paid.</p>
 
       <h2>The search space is the whole problem</h2>
 
-      <p>The reason this is hard becomes obvious once you see the numbers. With just five combinatorial reactions, the miners can generate on the order of 61 billion possible molecules, and brute-forcing that space on standard infrastructure would take roughly 175 years. Nanobody space is larger again, by orders of magnitude. Throwing money at faster machines does not fix this, so the real work is inventing more efficient ways to search enormous chemical spaces and to know where to look. Once a search turns up promising candidates, they go to a physical lab for validation, which Micaela calls the real gold standard, because a virtual benchmark only matters if the molecule behaves in the real world.</p>
+      <p>The reason this is hard becomes obvious once you see the numbers. With just five combinatorial reactions, the miners can generate on the order of 61 billion possible molecules, and brute-forcing that space on standard infrastructure would take roughly 175 years. Nanobody space is larger again, by orders of magnitude. Throwing money at faster machines does not fix this, so the real work is inventing more efficient ways to search enormous chemical spaces and to know where to look. Once a search turns up promising candidates, they go to a physical lab for validation, the real gold standard, because a virtual benchmark only matters if the molecule behaves in the real world.</p>
 
       <h2>Why do it in the open</h2>
 
@@ -34,12 +34,12 @@
       <ul>
         <li>Adversarial pressure. Miners constantly poke holes in Nova's state-of-the-art models, and every submission becomes a signal about what works and what does not.</li>
         <li>A shared learning loop. Closed labs have no incentive to share data, so groups all over the world quietly relearn the same lessons in parallel, and Nova's loop is built to remove that redundancy.</li>
-        <li>Interdisciplinary ideas. Abstracting discovery into a general search problem lets outsiders contribute. Micaela's favourite example was a miner who borrowed an optimization strategy from energy-supply arbitrage and used it to beat Thompson sampling, a well-regarded published technique, across several targets, including a hard-to-drug oncology target.</li>
+        <li>Interdisciplinary ideas. Abstracting discovery into a general search problem lets outsiders contribute. One striking example: a miner who borrowed an optimization strategy from energy-supply arbitrage and used it to beat Thompson sampling, a well-regarded published technique, across several targets, including a hard-to-drug oncology target.</li>
       </ul>
 
       <h2>The prize, and the incumbents</h2>
 
-      <p>The reason serious money is chasing this is that the payoff on the other side is close to unbounded. Micaela pointed to the comparables:</p>
+      <p>The reason serious money is chasing this is that the payoff on the other side is close to unbounded. The comparables are stark:</p>
 
       <ul>
         <li><a href="https://pharmaphorum.com/news/insilico-ends-2025-293m-hong-kong-ipo" target="_blank" rel="noopener">Insilico Medicine</a> has listed publicly, raised well over a billion dollars across its life, and carries clinical-stage assets.</li>
@@ -51,10 +51,10 @@
 
       <h2>Where Nova is now</h2>
 
-      <p>Nova launched in March 2025 and now runs three incentive mechanisms, one for small molecules, one for the search algorithms themselves, and one for nanobodies, with a fourth planned. The team is deliberately global, with partners in China, Canada, and the United States, and a recently announced partnership with OnePot AI, an AI-driven robotic lab, is meant to close the loop between a virtual prediction and a physical result. The first assets in development include a triple reuptake inhibitor aimed at a set of large indications and a nanobody program against an oncology target. Micaela is candid that drug timelines and the attention economy of a token do not naturally sit well together, and that the hardest ongoing work is contextualizing slow, real scientific progress for a community that would prefer results overnight. The through-line of the whole conversation was that science benefits from openness, replication, and adversarial pressure, and that a global, decentralized competition can supply all three more cheaply than a closed lab.</p>
+      <p>Nova launched in March 2025 and now runs three incentive mechanisms, one for small molecules, one for the search algorithms themselves, and one for nanobodies, with a fourth planned. The team is deliberately global, with partners in China, Canada, and the United States, and a recently announced partnership with OnePot AI, an AI-driven robotic lab, is meant to close the loop between a virtual prediction and a physical result. The first assets in development include a triple reuptake inhibitor aimed at a set of large indications and a nanobody program against an oncology target. There is a real tension underneath all of it: drug timelines and the attention economy of a token do not naturally sit well together, and the hardest ongoing work is contextualizing slow, real scientific progress for a community that would prefer results overnight. The through-line is that science benefits from openness, replication, and adversarial pressure, and that a global, decentralized competition can supply all three more cheaply than a closed lab.</p>
 
       <div class="source-note">
-        Source. From my conversation with Micaela of Nova on <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Supercycle</a>. Figures she cited have been checked where public; the framing and any errors are mine.
+        Figures cited here are checked against public sources where available. The framing and any errors are mine.
       </div>
     </article>
 
