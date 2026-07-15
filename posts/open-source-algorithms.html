@@ -27,11 +27,45 @@
 
       <p>A model like DeepSeek or Qwen is locally deployable and open-weight, which means you can hold the finished artifact in your hands. What you cannot do is look underneath it. The source, in Fletcher's sense, is the set of algorithmic methods and the data that get processed into those weights. Without the source, you can tune a model at the edges and make it a little better at one thing and worse at another, but you cannot build on it in the way that actually compounds. Open source is the ability to take someone's work, understand exactly how it functions, and make something strictly better that the next person can then improve again.</p>
 
-      <p>His analogy is the one that lands. Linux is not the best open-source operating system, it is the best operating system, full stop, because thousands of people can read the source and build on each other's work until no closed competitor can keep up. Fletcher's bet is that AI can go the same way, but only if the source underneath the models is actually open.</p>
+      <p>The analogy that lands is Linux, which is not the best open-source operating system but the best operating system, full stop, because thousands of people can read the source and build on each other's work until no closed competitor can keep up. Fletcher's bet is that AI can go the same way, but only if the source underneath the models is actually open.</p>
 
       <h2>The algorithm is the source</h2>
 
       <p>The Innovation Game runs competitions to develop better algorithms, and the key word is algorithms rather than models. These are interpretable, white-box methods, closer to equations than to giant matrices of inscrutable weights. Because you can read them, you can understand exactly how they work, and then you can propose a better idea on top. That is the old-fashioned meaning of open source, where you have the C code rather than just the compiled binary of ones and zeros. Models sit at the top of the stack, and the algorithms that turn data into models sit beneath them, which is why Fletcher argues the algorithm layer is the one that has to stay open.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Layered AI stack showing that open weights exposes only the finished model, while open source exposes the algorithm layer that produces it">
+          <style>
+            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            .ttl{font-size:17px;font-weight:700}
+            .sm{font-size:12px;fill:#6a6a6a}
+            .lyr{font-size:14.5px;font-weight:700}
+            .lyrw{font-size:14.5px;font-weight:700;fill:#ffffff}
+            .an{font-size:12.5px;font-weight:700}
+            .and{font-size:11.5px;fill:#6a6a6a}
+          </style>
+          <text x="24" y="34" class="t ttl">Open weights is not open source</text>
+          <!-- stack -->
+          <rect x="40" y="56" width="470" height="42" fill="#f2f2f2" stroke="#dddddd"/>
+          <text x="60" y="82" class="t lyr">Applications</text>
+          <rect x="40" y="104" width="470" height="42" fill="#666666" stroke="#555555"/>
+          <text x="60" y="130" class="t lyr" style="fill:#ffffff">Models: the weights</text>
+          <rect x="40" y="152" width="470" height="42" fill="#111111"/>
+          <text x="60" y="178" class="t lyr" style="fill:#ffffff">Algorithms: the methods that make them</text>
+          <rect x="40" y="200" width="470" height="42" fill="#f2f2f2" stroke="#dddddd"/>
+          <text x="60" y="226" class="t lyr">Data</text>
+          <!-- brackets -->
+          <path d="M524,104 L540,104 L540,146 L524,146" fill="none" stroke="#6a6a6a" stroke-width="1.2"/>
+          <text x="550" y="122" class="t an">Open weights</text>
+          <text x="550" y="139" class="t and">run and inspect the artifact</text>
+          <path d="M524,152 L540,152 L540,242 L524,242" fill="none" stroke="#111111" stroke-width="1.4"/>
+          <text x="550" y="188" class="t an">Open source</text>
+          <text x="550" y="205" class="t and">read and rebuild what</text>
+          <text x="550" y="220" class="t and">produced the model</text>
+          <text x="40" y="270" class="t sm">You can hold the finished model in your hands without seeing the source that compounds.</text>
+        </svg>
+        <figcaption>Models sit at the top of the stack; the algorithms that turn data into models sit beneath them. Keeping that lower layer open is the whole argument.</figcaption>
+      </figure>
 
       <h2>A best-in-the-world result, not a best-in-crypto one</h2>
 
@@ -51,6 +85,48 @@
         <li>Even the largest companies underfund pure research, because the returns are uncertain and they prefer safer, lower-variance bets.</li>
         <li>Closed work cannot compound the way open work does. When a private team invents something better, nobody outside can see it or build on it, whereas rewarding open publication and letting others build on top coordinates researchers worldwide into a single accelerating effort.</li>
       </ul>
+
+      <figure class="figure">
+        <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrast between closed research that dead-ends privately and open research where each result is published and built upon into a new state of the art">
+          <defs>
+            <marker id="oah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
+            </marker>
+          </defs>
+          <style>
+            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            .ttl{font-size:17px;font-weight:700}
+            .hd{font-size:14.5px;font-weight:700}
+            .bx{font-size:12.5px;font-weight:700}
+            .sm{font-size:12px;fill:#6a6a6a}
+            .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="24" y="34" class="t ttl">Why open pulls ahead</text>
+          <line x1="360" y1="52" x2="360" y2="248" stroke="#dddddd" stroke-width="1"/>
+          <!-- closed -->
+          <text x="40" y="78" class="t hd">Closed</text>
+          <rect x="40" y="92" width="180" height="40" fill="#ffffff" stroke="#111111"/>
+          <text x="130" y="116" text-anchor="middle" class="t bx">A private breakthrough</text>
+          <line x1="130" y1="132" x2="130" y2="158" class="ar"/>
+          <line x1="60" y1="162" x2="200" y2="162" stroke="#111111" stroke-width="3"/>
+          <text x="40" y="192" class="t sm">Invisible to everyone else.</text>
+          <text x="40" y="210" class="t sm">The world quietly relearns it</text>
+          <text x="40" y="228" class="t sm">in parallel.</text>
+          <!-- open -->
+          <text x="400" y="78" class="t hd">Open</text>
+          <rect x="400" y="150" width="110" height="40" fill="#ffffff" stroke="#111111"/>
+          <text x="455" y="174" text-anchor="middle" class="t bx">Published</text>
+          <rect x="530" y="118" width="110" height="40" fill="#ffffff" stroke="#111111"/>
+          <text x="585" y="142" text-anchor="middle" class="t bx">Improved</text>
+          <rect x="650" y="86" width="120" height="40" fill="#111111"/>
+          <text x="710" y="110" text-anchor="middle" class="t bx" style="fill:#ffffff">New SOTA</text>
+          <line x1="510" y1="164" x2="528" y2="150" class="ar" marker-end="url(#oah)"/>
+          <line x1="640" y1="132" x2="648" y2="120" class="ar" marker-end="url(#oah)"/>
+          <text x="400" y="222" class="t sm">Each result builds on the last, so researchers</text>
+          <text x="400" y="240" class="t sm">worldwide act as one accelerating effort.</text>
+        </svg>
+        <figcaption>The same dynamic that let Linux pull away from Windows: closed advances stay isolated, while open ones compound into a lead a single firm cannot outspend.</figcaption>
+      </figure>
 
       <p>That is the same reason Linux pulled away from Windows and never looked back. The stakes, in his telling, are higher this time, because algorithms sit at the very bottom of the stack, at the level of mathematics, and whoever controls that layer controls a great deal above it. If open source does not win, a single private entity ends up holding the most capable intelligence in the world, which is why he thinks keeping the source open matters more for AI than it ever did for operating systems.</p>
 

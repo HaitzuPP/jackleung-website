@@ -46,9 +46,39 @@
 
       <h2>The "deliberate Frankenstein"</h2>
 
-      <p>Here is the part I liked most. Manako's system refuses to be pure. It isn't one elegant model. Sebti cheerfully calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job well.</p>
+      <p>The most revealing design choice is that Manako's system refuses to be pure, and is not one elegant model at all. Sebti cheerfully calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job well.</p>
 
       <p>That is an engineer's answer, not a researcher's. It admits that no single approach is good enough yet, and that shipping something real means assembling the parts that each earn their keep. In a field still waiting for its one big idea, the winning move is to combine what works today instead of holding out for what might work tomorrow.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 800 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a composite on-device vision system combining three models and ten primitives inside a 19 megabyte footprint">
+          <style>
+            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            .ttl{font-size:17px;font-weight:700}
+            .sm{font-size:12px;fill:#6a6a6a}
+            .comp{font-size:14px;font-weight:700}
+            .cap{font-size:11.5px;fill:#6a6a6a}
+          </style>
+          <text x="24" y="34" class="t ttl">One system, deliberately impure</text>
+          <text x="24" y="54" class="t sm">A distilled reasoning model, a vision-language model and a detection model, bolted together</text>
+          <!-- container -->
+          <rect x="150" y="70" width="500" height="150" fill="#fafafa" stroke="#111111" stroke-width="1.2"/>
+          <text x="400" y="90" text-anchor="middle" class="t cap">On-device · ~19MB · real time</text>
+          <!-- three model blocks -->
+          <rect x="170" y="100" width="460" height="26" fill="#ffffff" stroke="#999999"/>
+          <text x="400" y="118" text-anchor="middle" class="t comp">Distilled reasoning model</text>
+          <rect x="170" y="132" width="460" height="26" fill="#ffffff" stroke="#999999"/>
+          <text x="400" y="150" text-anchor="middle" class="t comp">Vision-language model</text>
+          <rect x="170" y="164" width="460" height="26" fill="#ffffff" stroke="#999999"/>
+          <text x="400" y="182" text-anchor="middle" class="t comp">Pure detection model</text>
+          <!-- primitives row -->
+          <g fill="#111111">
+            <rect x="172" y="198" width="38" height="14"/><rect x="218" y="198" width="38" height="14"/><rect x="264" y="198" width="38" height="14"/><rect x="310" y="198" width="38" height="14"/><rect x="356" y="198" width="38" height="14"/><rect x="402" y="198" width="38" height="14"/><rect x="448" y="198" width="38" height="14"/><rect x="494" y="198" width="38" height="14"/><rect x="540" y="198" width="38" height="14"/><rect x="586" y="198" width="38" height="14"/>
+          </g>
+          <text x="400" y="240" text-anchor="middle" class="t sm">≈10 custom primitives, each doing one narrow job</text>
+        </svg>
+        <figcaption>An engineer's answer, not a researcher's. No single approach is good enough alone, so the parts that each earn their keep get assembled into one footprint small enough to run on the camera.</figcaption>
+      </figure>
 
       <h2>Why the data layer is the durable position</h2>
 
@@ -60,6 +90,43 @@
       </blockquote>
 
       <p>The loop is easy to describe and brutal to copy. A team deploys a working system into a real environment, and that deployment earns it access to a camera network. That network then supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces still more data. Whoever gets that flywheel spinning first builds a lead that a better model, showing up late, cannot simply purchase.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circular flywheel diagram: deploy a working system, earn camera-network access, capture the data distribution, train better models, and repeat">
+          <defs>
+            <marker id="vah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
+            </marker>
+          </defs>
+          <style>
+            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            .ttl{font-size:17px;font-weight:700}
+            .nd{font-size:13.5px;font-weight:700}
+            .sm{font-size:12px;fill:#6a6a6a}
+            .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="24" y="34" class="t ttl">The data flywheel</text>
+          <!-- nodes -->
+          <rect x="300" y="56" width="200" height="46" fill="#ffffff" stroke="#111111"/>
+          <text x="400" y="84" text-anchor="middle" class="t nd">Deploy a working system</text>
+          <rect x="560" y="164" width="210" height="46" fill="#ffffff" stroke="#111111"/>
+          <text x="665" y="185" text-anchor="middle" class="t nd">Earn camera-network</text>
+          <text x="665" y="201" text-anchor="middle" class="t nd">access</text>
+          <rect x="300" y="272" width="200" height="46" fill="#ffffff" stroke="#111111"/>
+          <text x="400" y="293" text-anchor="middle" class="t nd">Capture the exact</text>
+          <text x="400" y="309" text-anchor="middle" class="t nd">data distribution</text>
+          <rect x="30" y="164" width="200" height="46" fill="#ffffff" stroke="#111111"/>
+          <text x="130" y="192" text-anchor="middle" class="t nd">Train better models</text>
+          <!-- clockwise arrows -->
+          <path d="M500,79 C580,90 640,120 665,162" class="ar" marker-end="url(#vah)"/>
+          <path d="M665,210 C640,250 560,285 502,292" class="ar" marker-end="url(#vah)"/>
+          <path d="M300,295 C210,285 150,250 130,212" class="ar" marker-end="url(#vah)"/>
+          <path d="M130,164 C150,120 220,90 298,79" class="ar" marker-end="url(#vah)"/>
+          <text x="400" y="183" text-anchor="middle" class="t sm">compounds</text>
+          <text x="400" y="199" text-anchor="middle" class="t sm">every cycle</text>
+        </svg>
+        <figcaption>Access is won in the field, then compounds. The team that starts the loop first owns a data position a late, better model cannot buy its way into.</figcaption>
+      </figure>
 
       <p>This brings the argument back to where it started. Vision may still be waiting for its GPT moment, the single recipe that turns everything after it into a scaling exercise. The more useful read is that the winners will not be whoever finds that recipe. They will be whoever already owns the data pipeline it would need, and that is a position a team takes by shipping rather than by waiting.</p>
 
