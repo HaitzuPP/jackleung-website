@@ -29,7 +29,7 @@
 
       <p>The problem starts with a hard physical limit. You cannot pipe video from every camera, all day, to a data center and run a large model over it. The bandwidth does not exist, the bill is absurd, and the lag kills anything that has to act in the moment. The model therefore has to live where the camera lives, and in practice that means something tiny, on the order of a 19MB model running on the device itself.</p>
 
-      <p>That constraint decides the design space. The question is not which architecture is most capable, it is which capable thing fits on a camera and answers in real time. Data does not just train the model; it dictates the architecture. The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
+      <p>That constraint decides the design space. The question is not which architecture is most capable, it is which capable thing fits on a camera and answers in real time. <mark class="hl">Data does not just train the model; it dictates the architecture.</mark> The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
 
       <p>Most of the field treats architecture as the interesting decision and data as the input you shovel in. On-device vision inverts that order: the physics of where the data lives comes first, and the model is whatever fits inside it.</p>
 
@@ -82,13 +82,13 @@
 
       <h2>Why the data layer is the durable position</h2>
 
-      <p>Models are getting commoditised; the durable position is the data. You do not buy your way into the right data, you earn it by deploying systems that work.</p>
+      <p><mark class="hl">Models are getting commoditised; the durable position is the data.</mark> You do not buy your way into the right data, you earn it by deploying systems that work.</p>
 
       <blockquote>
         Access is won in the field, and then it compounds.
       </blockquote>
 
-      <p>A team deploys a working system into a real environment, and that deployment earns it access to a camera network. The network supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces more data. Whoever gets that flywheel spinning first builds a lead a better model, arriving late, cannot purchase.</p>
+      <p>A team deploys a working system into a real environment, and that deployment earns it access to a camera network. The network supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces more data. <mark class="hl">Whoever gets that flywheel spinning first builds a lead a better model, arriving late, cannot purchase.</mark></p>
 
       <figure class="figure">
         <svg viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circular flywheel diagram: deploy a working system, earn camera-network access, capture the data distribution, train better models, and repeat">
@@ -133,6 +133,19 @@
         Quotes are his. The framing and any mistakes are mine.
       </div>
     </article>
+
+      <nav class="post-foot-nav" aria-label="More essays">
+        <a class="pfn-prev" href="ai-in-drug-discovery.html">
+          <span class="pfn-label">← Older</span>
+          <span class="pfn-title">AI in Drug Discovery</span>
+        </a>
+        <a class="pfn-next" href="open-source-algorithms.html">
+          <span class="pfn-label">Newer →</span>
+          <span class="pfn-title">Open Source Algorithms</span>
+        </a>
+      </nav>
+
+
 
   </main>
 </body>
