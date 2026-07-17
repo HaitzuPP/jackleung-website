@@ -23,15 +23,15 @@
     <article class="article">
       <p>Language had it easy. One architecture won, and everything after was a scaling problem: more data, more compute, better answers. Computer vision never got that clean break. It has ten competing recipes and no champion, and not one of them can reliably walk into a scene it has never seen before and just work.</p>
 
-      <p>That gap is the whole story. The claim that stuck with me comes from Max Sebti of <a href="https://manako.ai/" target="_blank" rel="noopener">Manako Labs</a>: the thing that decides the winner is not the model at all.</p>
+      <p>The model will not decide the winner. Max Sebti of <a href="https://manako.ai/" target="_blank" rel="noopener">Manako Labs</a> argues the deciding constraint sits underneath it, in where the data has to be processed.</p>
 
       <h2>Start with the data problem</h2>
 
       <p>The problem starts with a hard physical limit. You cannot pipe video from every camera, all day, to a data center and run a large model over it. The bandwidth does not exist, the bill is absurd, and the lag kills anything that has to act in the moment. The model therefore has to live where the camera lives, and in practice that means something tiny, on the order of a 19MB model running on the device itself.</p>
 
-      <p>Once you accept that constraint, the whole design space snaps into focus. The question stops being which architecture is most capable and becomes which capable thing actually fits on a camera and answers in real time. Sebti's line for it is that data does not just train the model, it dictates the architecture. The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
+      <p>That constraint decides the design space. The question is not which architecture is most capable, it is which capable thing fits on a camera and answers in real time. Data does not just train the model; it dictates the architecture. The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
 
-      <p>Most of the field has this backwards. It treats the architecture as the interesting decision and the data as the boring input you shovel in. On-device vision flips the order. The physics of where the data lives comes first, and the model is whatever you can fit inside it.</p>
+      <p>Most of the field treats architecture as the interesting decision and data as the input you shovel in. On-device vision inverts that order: the physics of where the data lives comes first, and the model is whatever fits inside it.</p>
 
       <h2>Two bets on world models</h2>
 
@@ -46,9 +46,9 @@
 
       <h2>The "deliberate Frankenstein"</h2>
 
-      <p>The most revealing design choice is that Manako's system refuses to be pure, and is not one elegant model at all. Sebti cheerfully calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job well.</p>
+      <p>Manako's system is not one elegant model. Sebti calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job.</p>
 
-      <p>That is an engineer's answer, not a researcher's. It admits that no single approach is good enough yet, and that shipping something real means assembling the parts that each earn their keep. In a field still waiting for its one big idea, the winning move is to combine what works today instead of holding out for what might work tomorrow.</p>
+      <p>No single approach is good enough yet, so shipping means assembling the parts that each earn their keep. In a field still waiting for its one big idea, combining what works today beats holding out for what might work tomorrow.</p>
 
       <figure class="figure">
         <svg viewBox="0 0 800 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a composite on-device vision system combining three models and ten primitives inside a 19 megabyte footprint">
@@ -82,14 +82,14 @@
 
       <h2>Why the data layer is the durable position</h2>
 
-      <p>The last piece is the business argument, and it travels well beyond vision. Models are getting commoditized. The durable position is the data. And you do not buy your way into the right data. You earn it by deploying systems that work.</p>
+      <p>Models are getting commoditised; the durable position is the data. You do not buy your way into the right data, you earn it by deploying systems that work.</p>
 
       <blockquote>
         Access is won in the field, and then it compounds.
         <cite>Max Sebti, Manako Labs</cite>
       </blockquote>
 
-      <p>The loop is easy to describe and brutal to copy. A team deploys a working system into a real environment, and that deployment earns it access to a camera network. That network then supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces still more data. Whoever gets that flywheel spinning first builds a lead that a better model, showing up late, cannot simply purchase.</p>
+      <p>A team deploys a working system into a real environment, and that deployment earns it access to a camera network. The network supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces more data. Whoever gets that flywheel spinning first builds a lead a better model, arriving late, cannot purchase.</p>
 
       <figure class="figure">
         <svg viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circular flywheel diagram: deploy a working system, earn camera-network access, capture the data distribution, train better models, and repeat">
@@ -128,7 +128,7 @@
         <figcaption>Access is won in the field, then compounds. The team that starts the loop first owns a data position a late, better model cannot buy its way into.</figcaption>
       </figure>
 
-      <p>This brings the argument back to where it started. Vision may still be waiting for its GPT moment, the single recipe that turns everything after it into a scaling exercise. The more useful read is that the winners will not be whoever finds that recipe. They will be whoever already owns the data pipeline it would need, and that is a position a team takes by shipping rather than by waiting.</p>
+      <p>Vision may still be waiting for its GPT moment, the single recipe that turns everything after it into a scaling exercise. The winners will not be whoever finds that recipe; they will be whoever already owns the data pipeline it would need, and that position is taken by shipping rather than waiting.</p>
 
       <div class="source-note">
         Quotes are Max Sebti's, of <a href="https://manako.ai/" target="_blank" rel="noopener">Manako Labs</a>. The framing and any mistakes are mine.
