@@ -75,6 +75,11 @@ a:hover { color: var(--link-hov); text-decoration: none; }
 
 /* ---------- Section headers with rule ---------- */
 section { margin-top: 1.8rem; }
+section + section {
+  border-top: 1px solid var(--line);
+  padding-top: 1.6rem;
+  margin-top: 2rem;
+}
 .section-label {
   font-family: var(--serif);
   font-size: 1.35rem;
