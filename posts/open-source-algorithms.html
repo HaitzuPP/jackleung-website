@@ -34,17 +34,17 @@
       <p>His project runs competitions to develop better algorithms, and the key word is algorithms rather than models. These are interpretable, white-box methods, closer to equations than to giant matrices of inscrutable weights. Because you can read them, you can understand exactly how they work, and then you can propose a better idea on top. That is the old-fashioned meaning of open source, where you have the C code rather than just the compiled binary of ones and zeros. <mark class="hl">Models sit at the top of the stack, and the algorithms that turn data into models sit beneath them, which is why he argues the algorithm layer is the one that has to stay open.</mark></p>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Layered AI stack showing that open weights exposes only the finished model, while open source exposes the algorithm layer that produces it">
+        <svg id="f1" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Layered AI stack showing that open weights exposes only the finished model, while open source exposes the algorithm layer that produces it">
           <style>
-            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            .ttl{font-size:17px;font-weight:700}
-            .sm{font-size:12px;fill:#6a6a6a}
-            .lyr{font-size:14.5px;font-weight:700}
-            .lyrw{font-size:14.5px;font-weight:700;fill:#ffffff}
-            .an{font-size:12.5px;font-weight:700}
-            .and{font-size:11.5px;fill:#6a6a6a}
+            #f1 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f1 .ttl{font-size:17px;font-weight:700}
+            #f1 .sm{font-size:12px;fill:#6a6a6a}
+            #f1 .lyr{font-size:14.5px;font-weight:700}
+            #f1 .lyrw{font-size:14.5px;font-weight:700;fill:#ffffff}
+            #f1 .an{font-size:12.5px;font-weight:700}
+            #f1 .and{font-size:11.5px;fill:#6a6a6a}
           </style>
-          <text x="24" y="34" class="t ttl">Open weights is not open source</text>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">Open weights is not open source</text>
           <!-- stack -->
           <rect x="40" y="56" width="470" height="42" fill="#f2f2f2" stroke="#dddddd"/>
           <text x="60" y="82" class="t lyr">Applications</text>
@@ -77,6 +77,53 @@
 
       <p>For most of history you could not sell an algorithm directly, so people sold the implementation instead. A researcher would publish a method in a journal, and a company that wanted it would pay a consultancy to code and customize it. His project adds a license fee for the algorithm itself, which sounds small but is the part nobody could make work before. Enforcement runs on reputation rather than litigation, the same way the open-source community polices Linux, because infringing a project the community believes in carries a social cost that infringing a corporate patent does not. His deeper point is that open source historically had no money flowing through it, and patents and GPUs both cost money, so an open project with real monetary flows can suddenly use instruments that pure volunteer efforts never could.</p>
 
+      
+      <figure class="figure">
+        <svg id="f3" viewBox="0 0 800 245" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two flows compared: the old route where a journal method is coded by a consultancy that collects the fee, and the new route where a licence on the method itself pays the author">
+          <defs>
+            <marker id="f3a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
+            </marker>
+          </defs>
+          <style>
+            #f3 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f3 .ttl{font-size:17px;font-weight:700}
+            #f3 .sub{font-size:12.5px;fill:#6a6a6a}
+            #f3 .hd{font-size:15px;font-weight:700}
+            #f3 .nd{font-size:13.5px;font-weight:700}
+            #f3 .bd{font-size:12.5px;fill:#333333}
+            #f3 .sm{font-size:11.5px;fill:#6a6a6a}
+            #f3 .ax{font-size:11.5px;fill:#6a6a6a}
+            #f3 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">You could only ever sell the implementation</text>
+          <text x="400" y="54" text-anchor="middle" class="t sub">What changes when the method itself carries a licence</text>
+          <text x="24" y="86" class="t hd">The old way</text>
+          <rect x="24" y="94" width="170" height="42" fill="#ffffff" stroke="#111111"/>
+          <text x="109" y="120" text-anchor="middle" class="t bd">A method in a journal</text>
+          <line x1="196" y1="115" x2="214" y2="115" class="ar" marker-end="url(#f3a)"/>
+          <rect x="218" y="94" width="170" height="42" fill="#ffffff" stroke="#111111"/>
+          <text x="303" y="120" text-anchor="middle" class="t bd">A consultancy codes it</text>
+          <line x1="390" y1="115" x2="408" y2="115" class="ar" marker-end="url(#f3a)"/>
+          <rect x="412" y="94" width="170" height="42" fill="#f5f5f5" stroke="#111111"/>
+          <text x="497" y="120" text-anchor="middle" class="t bd">The consultancy is paid</text>
+          <text x="598" y="110" class="t sm">The method itself</text>
+          <text x="598" y="125" class="t sm">earns nothing.</text>
+          <text x="24" y="172" class="t hd">The new way</text>
+          <rect x="24" y="180" width="170" height="42" fill="#ffffff" stroke="#111111"/>
+          <text x="109" y="206" text-anchor="middle" class="t bd">The algorithm, published</text>
+          <line x1="196" y1="201" x2="214" y2="201" class="ar" marker-end="url(#f3a)"/>
+          <rect x="218" y="180" width="170" height="42" fill="#ffffff" stroke="#111111"/>
+          <text x="303" y="206" text-anchor="middle" class="t bd">A licence on the method</text>
+          <line x1="390" y1="201" x2="408" y2="201" class="ar" marker-end="url(#f3a)"/>
+          <rect x="412" y="180" width="170" height="42" fill="#111111"/>
+          <text x="497" y="206" text-anchor="middle" class="t bd" style="fill:#ffffff">The author is paid</text>
+          <text x="598" y="196" class="t sm">Policed by reputation,</text>
+          <text x="598" y="211" class="t sm">the way Linux is.</text>
+        </svg>
+        <figcaption>For most of history the algorithm earned nothing and the implementation earned everything. A licence on the method is the small change nobody could make work before.</figcaption>
+      </figure>
+
       <h2>Why open can beat a giant</h2>
 
       <p>The obvious objection is that an individual cannot outspend Amazon. His answer rests on two points:</p>
@@ -87,21 +134,21 @@
       </ul>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrast between closed research that dead-ends privately and open research where each result is published and built upon into a new state of the art">
+        <svg id="f2" viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrast between closed research that dead-ends privately and open research where each result is published and built upon into a new state of the art">
           <defs>
             <marker id="oah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
             </marker>
           </defs>
           <style>
-            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            .ttl{font-size:17px;font-weight:700}
-            .hd{font-size:14.5px;font-weight:700}
-            .bx{font-size:12.5px;font-weight:700}
-            .sm{font-size:12px;fill:#6a6a6a}
-            .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+            #f2 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f2 .ttl{font-size:17px;font-weight:700}
+            #f2 .hd{font-size:14.5px;font-weight:700}
+            #f2 .bx{font-size:12.5px;font-weight:700}
+            #f2 .sm{font-size:12px;fill:#6a6a6a}
+            #f2 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
-          <text x="24" y="34" class="t ttl">Why open pulls ahead</text>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">Why open pulls ahead</text>
           <line x1="360" y1="52" x2="360" y2="248" stroke="#dddddd" stroke-width="1"/>
           <!-- closed -->
           <text x="40" y="78" class="t hd">Closed</text>
@@ -142,7 +189,7 @@
         </a>
         <a class="pfn-next" href="robotics-data-problem.html">
           <span class="pfn-label">Newer →</span>
-          <span class="pfn-title">Robotic's Data Problem</span>
+          <span class="pfn-title">Robotics Data Problem</span>
         </a>
       </nav>
 

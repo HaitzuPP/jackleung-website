@@ -44,6 +44,54 @@
 
       <p>Generative demos are the ones that go viral, because you can watch them work. But for a model that has to run on a camera, the predictive approach is cheaper, and a lot more honest about what you can actually afford.</p>
 
+      
+      <figure class="figure">
+        <svg id="f3" viewBox="0 0 800 268" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrast between predictive world models, shown as small compressed abstract states, and generative world models, shown as full rendered frames">
+          <defs>
+            <marker id="f3a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
+            </marker>
+          </defs>
+          <style>
+            #f3 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f3 .ttl{font-size:17px;font-weight:700}
+            #f3 .sub{font-size:12.5px;fill:#6a6a6a}
+            #f3 .hd{font-size:15px;font-weight:700}
+            #f3 .nd{font-size:13.5px;font-weight:700}
+            #f3 .bd{font-size:12.5px;fill:#333333}
+            #f3 .sm{font-size:11.5px;fill:#6a6a6a}
+            #f3 .ax{font-size:11.5px;fill:#6a6a6a}
+            #f3 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">Two bets on what comes next</text>
+          <text x="400" y="54" text-anchor="middle" class="t sub">Both build a world model. Only one fits on the camera.</text>
+          <line x1="400" y1="72" x2="400" y2="252" stroke="#dddddd" stroke-width="1"/>
+          <text x="40" y="96" class="t hd">Predictive</text>
+          <text x="40" y="114" class="t sm">the JEPA lineage</text>
+          <rect x="52" y="136" width="16" height="16" fill="#111111"/>
+          <line x1="72" y1="144" x2="86" y2="144" class="ar" marker-end="url(#f3a)"/>
+          <rect x="92" y="136" width="16" height="16" fill="#111111"/>
+          <line x1="112" y1="144" x2="126" y2="144" class="ar" marker-end="url(#f3a)"/>
+          <rect x="132" y="136" width="16" height="16" fill="#111111"/>
+          <text x="40" y="178" class="t sm">A compressed, abstract state.</text>
+          <text x="40" y="204" class="t bd">It never draws the future. It only sees</text>
+          <text x="40" y="219" class="t bd">it coming.</text>
+          <text x="40" y="243" class="t nd">Cheap enough to run on the camera.</text>
+          <text x="432" y="96" class="t hd">Generative</text>
+          <text x="432" y="114" class="t sm">frame by frame</text>
+          <rect x="440" y="126" width="52" height="36" fill="#ffffff" stroke="#111111"/>
+          <line x1="494" y1="144" x2="510" y2="144" class="ar" marker-end="url(#f3a)"/>
+          <rect x="512" y="126" width="52" height="36" fill="#ffffff" stroke="#111111"/>
+          <line x1="566" y1="144" x2="582" y2="144" class="ar" marker-end="url(#f3a)"/>
+          <rect x="584" y="126" width="52" height="36" fill="#ffffff" stroke="#111111"/>
+          <text x="432" y="178" class="t sm">A rendered picture of the next moment.</text>
+          <text x="432" y="204" class="t bd">The demos that go viral, because you</text>
+          <text x="432" y="219" class="t bd">can watch them work.</text>
+          <text x="432" y="243" class="t nd">The one you cannot afford on-device.</text>
+        </svg>
+        <figcaption>The viral demos come from the expensive side. On a camera, predicting an abstract state beats rendering a picture you cannot afford to draw.</figcaption>
+      </figure>
+
       <h2>The "deliberate Frankenstein"</h2>
 
       <p>His system is not one elegant model. He calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job.</p>
@@ -51,16 +99,16 @@
       <p>No single approach is good enough yet, so shipping means assembling the parts that each earn their keep. In a field still waiting for its one big idea, combining what works today beats holding out for what might work tomorrow.</p>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a composite on-device vision system combining three models and ten primitives inside a 19 megabyte footprint">
+        <svg id="f1" viewBox="0 0 800 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a composite on-device vision system combining three models and ten primitives inside a 19 megabyte footprint">
           <style>
-            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            .ttl{font-size:17px;font-weight:700}
-            .sm{font-size:12px;fill:#6a6a6a}
-            .comp{font-size:14px;font-weight:700}
-            .cap{font-size:11.5px;fill:#6a6a6a}
+            #f1 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f1 .ttl{font-size:17px;font-weight:700}
+            #f1 .sm{font-size:12px;fill:#6a6a6a}
+            #f1 .comp{font-size:14px;font-weight:700}
+            #f1 .cap{font-size:11.5px;fill:#6a6a6a}
           </style>
-          <text x="24" y="34" class="t ttl">One system, deliberately impure</text>
-          <text x="24" y="54" class="t sm">A distilled reasoning model, a vision-language model and a detection model, bolted together</text>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">One system, deliberately impure</text>
+          <text x="400" y="54" text-anchor="middle" class="t sm">A distilled reasoning model, a vision-language model and a detection model, bolted together</text>
           <!-- container -->
           <rect x="24" y="70" width="752" height="150" fill="#fafafa" stroke="#111111" stroke-width="1.2"/>
           <text x="400" y="90" text-anchor="middle" class="t cap">On-device · ~19MB · real time</text>
@@ -91,20 +139,20 @@
       <p>A team deploys a working system into a real environment, and that deployment earns it access to a camera network. The network supplies the exact data distribution its models need. Better data makes the next deployment easier to win, which earns more access, which produces more data. <mark class="hl">Whoever gets that flywheel spinning first builds a lead a better model, arriving late, cannot purchase.</mark></p>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circular flywheel diagram: deploy a working system, earn camera-network access, capture the data distribution, train better models, and repeat">
+        <svg id="f2" viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circular flywheel diagram: deploy a working system, earn camera-network access, capture the data distribution, train better models, and repeat">
           <defs>
             <marker id="vah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
             </marker>
           </defs>
           <style>
-            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            .ttl{font-size:17px;font-weight:700}
-            .nd{font-size:13.5px;font-weight:700}
-            .sm{font-size:12px;fill:#6a6a6a}
-            .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+            #f2 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f2 .ttl{font-size:17px;font-weight:700}
+            #f2 .nd{font-size:13.5px;font-weight:700}
+            #f2 .sm{font-size:12px;fill:#6a6a6a}
+            #f2 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
-          <text x="24" y="34" class="t ttl">The data flywheel</text>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">The data flywheel</text>
           <!-- nodes -->
           <rect x="300" y="56" width="200" height="46" fill="#ffffff" stroke="#111111"/>
           <text x="400" y="84" text-anchor="middle" class="t nd">Deploy a working system</text>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Robotic's Data Problem · Jack Ai-Leung</title>
+  <title>Robotics Data Problem · Jack Ai-Leung</title>
   <meta name="description" content="Why data and evaluation, not hardware or model architecture, are the real constraints in physical AI, and what that means for how a robotics company should be built.">
-  <meta property="og:title" content="Robotic's Data Problem">
+  <meta property="og:title" content="Robotics Data Problem">
   <meta property="og:description" content="Data and evaluation are the real constraints in physical AI, not hardware or model architecture.">
   <meta property="og:type" content="article">
   <link rel="stylesheet" href="../style.css">
@@ -17,7 +17,7 @@
 
     <header class="post-head">
       <p class="post-meta">Writings · July 15, 2026</p>
-      <h1>Robotic's Data Problem</h1>
+      <h1>Robotics Data Problem</h1>
       <p class="standfirst">What building a physical AI company teaches you about where the field is actually stuck</p>
     </header>
 
@@ -32,6 +32,42 @@
 
       <p>The technical name for what is missing is diversity, and it is not a nice-to-have. It is the thing that produces generalization. This is a physical restatement of Rich Sutton's Bitter Lesson: general methods that scale with data and compute reliably beat clever, hand-engineered structure over the long run. In robotics, scaling with data specifically means scaling across the real distribution of environments the robot will actually encounter. You cannot get that distribution from a warehouse. You get it from the world, which is why the collection problem becomes a coverage problem rather than a volume problem alone.</p>
 
+      
+      <figure class="figure">
+        <svg id="f3" viewBox="0 0 800 242" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One staged training room on the left against a grid of eighteen varied real environments on the right, illustrating the coverage gap">
+          <defs>
+            <marker id="f3a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6a6a6a"/>
+            </marker>
+          </defs>
+          <style>
+            #f3 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f3 .ttl{font-size:17px;font-weight:700}
+            #f3 .sub{font-size:12.5px;fill:#6a6a6a}
+            #f3 .hd{font-size:15px;font-weight:700}
+            #f3 .nd{font-size:13.5px;font-weight:700}
+            #f3 .bd{font-size:12.5px;fill:#333333}
+            #f3 .sm{font-size:11.5px;fill:#6a6a6a}
+            #f3 .ax{font-size:11.5px;fill:#6a6a6a}
+            #f3 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">The policy learns the set, not the task</text>
+          <text x="400" y="54" text-anchor="middle" class="t sub">One staged room against the distribution it will actually meet</text>
+          <text x="170" y="86" text-anchor="middle" class="t sm">Trained on</text>
+          <rect x="110" y="98" width="120" height="70" fill="#f5f5f5" stroke="#111111"/>
+          <text x="170" y="128" text-anchor="middle" class="t nd">One room</text>
+          <text x="170" y="148" text-anchor="middle" class="t sm">staged and lit</text>
+          <line x1="244" y1="133" x2="300" y2="133" class="ar" marker-end="url(#f3a)"/>
+          <text x="518" y="86" text-anchor="middle" class="t sm">Deployed into</text>
+          <rect x="320" y="98" width="56" height="18" fill="#111111"/><rect x="388" y="98" width="56" height="18" fill="#555555"/><rect x="456" y="98" width="56" height="18" fill="#888888"/><rect x="524" y="98" width="56" height="18" fill="#333333"/><rect x="592" y="98" width="56" height="18" fill="#aaaaaa"/><rect x="660" y="98" width="56" height="18" fill="#666666"/>
+          <rect x="320" y="124" width="56" height="18" fill="#777777"/><rect x="388" y="124" width="56" height="18" fill="#222222"/><rect x="456" y="124" width="56" height="18" fill="#999999"/><rect x="524" y="124" width="56" height="18" fill="#444444"/><rect x="592" y="124" width="56" height="18" fill="#111111"/><rect x="660" y="124" width="56" height="18" fill="#bbbbbb"/>
+          <rect x="320" y="150" width="56" height="18" fill="#666666"/><rect x="388" y="150" width="56" height="18" fill="#aaaaaa"/><rect x="456" y="150" width="56" height="18" fill="#333333"/><rect x="524" y="150" width="56" height="18" fill="#888888"/><rect x="592" y="150" width="56" height="18" fill="#555555"/><rect x="660" y="150" width="56" height="18" fill="#777777"/>
+          <text x="518" y="190" text-anchor="middle" class="t sm">different light, counter height, clutter, every time</text>
+          <text x="400" y="222" text-anchor="middle" class="t nd">Diversity is not a nice-to-have. It is the thing that produces generalisation.</text>
+        </svg>
+        <figcaption>Train in the movie set and you get a policy that owns the movie set. Coverage of the real distribution, not volume alone, is what the collection problem is actually about.</figcaption>
+      </figure>
+
       <h2>Three ways to feed a robot, and what each one costs</h2>
 
       <p>There is no single source of robot training data. There are three, and the entire strategic game is understanding their distinct economics.</p>
@@ -43,18 +79,18 @@
       <p>The third source is human data, meaning ordinary egocentric video from a camera worn on the head. It is cheap and effortless to collect, which is why there is enormous momentum behind it right now. Historically it was considered close to useless for robotics, because manipulation demands precise three-dimensional information. The difference between a successful grasp and a dropped object can be a millimetre, and flat video does not obviously provide that. What changed is computer vision. Recovering depth from a single camera has moved from marginal to reliable, through work like MiDaS and more recently Depth Anything V2, and adding a second camera for stereo improves it further. Combined with advances in hand and pose tracking, this makes egocentric video newly usable as a training signal. Large-scale egocentric datasets such as Meta's Ego4D and Ego-Exo4D existed for years before the field could really exploit them. Only recently have the surrounding tools caught up enough to turn that video into something a policy can learn from.</p>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart positioning teleoperation, simulation and egocentric video by action fidelity against achievable scale, showing a trade-off frontier">
+        <svg id="f1" viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart positioning teleoperation, simulation and egocentric video by action fidelity against achievable scale, showing a trade-off frontier">
           <style>
-            .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            .ttl{font-size:17px;font-weight:700}
-            .sub{font-size:12.5px;fill:#6a6a6a}
-            .nd{font-size:14px;font-weight:700}
-            .bd{font-size:12px;fill:#333333}
-            .ax{font-size:11.5px;fill:#6a6a6a}
-            .axis{stroke:#999999;stroke-width:1}
+            #f1 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f1 .ttl{font-size:17px;font-weight:700}
+            #f1 .sub{font-size:12.5px;fill:#6a6a6a}
+            #f1 .nd{font-size:14px;font-weight:700}
+            #f1 .bd{font-size:12px;fill:#333333}
+            #f1 .ax{font-size:11.5px;fill:#6a6a6a}
+            #f1 .axis{stroke:#999999;stroke-width:1}
           </style>
-          <text x="24" y="34" class="t ttl">Three data sources, three different economics</text>
-          <text x="24" y="54" class="t sub">Action fidelity against the scale you can realistically reach</text>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">Three data sources, three different economics</text>
+          <text x="400" y="54" text-anchor="middle" class="t sub">Action fidelity against the scale you can realistically reach</text>
           <line x1="100" y1="86" x2="100" y2="286" class="axis"/>
           <line x1="100" y1="286" x2="762" y2="286" class="axis"/>
           <text x="94" y="92" text-anchor="end" class="t ax">high</text>
@@ -94,6 +130,39 @@
 
       <p>The most underappreciated point is that evaluation in physical AI behaves nothing like benchmarking in the digital world. In digital AI, benchmarks matter enormously but they are not a bottleneck on iteration speed, because you can run an eval suite instantly and deterministically. In the physical world the logic inverts, and it inverts in a way that is deeply counterintuitive: you only get a clear positive signal from a failure. Consider an autonomous driving stack that completes a million miles with no intervention. That does not prove full autonomy, because the next mile could produce a crash. You cannot brute-force failure in the real world the way you brute-force a test set, so you are forced to wait for rare, expensive, sometimes dangerous events and learn from them. This makes real-world evaluation a first-order bottleneck on iteration speed, not a reporting formality. It is one of the strongest arguments for treating evaluation, alongside data, as something that has to be scaled deliberately rather than assumed.</p>
 
+      
+      <figure class="figure">
+        <svg id="f4" viewBox="0 0 800 245" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A dense band of success marks representing a million uneventful miles beside a single black mark representing the one crash that carries information">
+          <style>
+            #f4 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f4 .ttl{font-size:17px;font-weight:700}
+            #f4 .sub{font-size:12.5px;fill:#6a6a6a}
+            #f4 .hd{font-size:15px;font-weight:700}
+            #f4 .nd{font-size:13.5px;font-weight:700}
+            #f4 .bd{font-size:12.5px;fill:#333333}
+            #f4 .sm{font-size:11.5px;fill:#6a6a6a}
+            #f4 .ax{font-size:11.5px;fill:#6a6a6a}
+            #f4 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">A million clean miles prove nothing</text>
+          <text x="400" y="54" text-anchor="middle" class="t sub">In the physical world only the failure carries signal</text>
+          <defs>
+            <pattern id="f4p" width="12" height="9" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="3" height="5" fill="#999999"/>
+            </pattern>
+          </defs>
+          <rect x="40" y="90" width="580" height="36" fill="url(#f4p)" stroke="#eeeeee" stroke-width="1"/>
+          <rect x="636" y="90" width="44" height="36" fill="#111111"/>
+          <text x="330" y="146" text-anchor="middle" class="t sm">a million miles, no intervention</text>
+          <text x="658" y="146" text-anchor="middle" class="t sm">one crash</text>
+          <text x="330" y="170" text-anchor="middle" class="t nd">Not proof.</text>
+          <text x="658" y="170" text-anchor="middle" class="t nd">Signal.</text>
+          <text x="400" y="208" text-anchor="middle" class="t bd">You cannot brute-force failure in the real world the way you brute-force a test set,</text>
+          <text x="400" y="224" text-anchor="middle" class="t bd">so evaluation, not model capacity, sets the pace of iteration.</text>
+        </svg>
+        <figcaption>Every mark on the left is a success, and together they still do not prove autonomy. The single mark on the right is the only one that teaches you anything.</figcaption>
+      </figure>
+
       <h2>For large models, messiness is a feature</h2>
 
       <p>There is a natural objection to any crowdsourced data strategy: if you let anyone contribute, how do you control quality? The answer requires redefining quality. A few years ago, quality meant clean framing and good lighting. For large models, the single most important property of a dataset is diversity, which means that a degree of messiness is not a defect to be filtered out but a signal to be captured. The world the robot will operate in is messy, so the training distribution should be too. This connects back to the reason egocentric video became valuable: data once dismissed as too noisy is now usable precisely because modern models can clean and extract signal from it, and because the diversity it carries is exactly what drives generalization. The implication for collection strategy is direct. You want contributions from many homes, kitchens, and cities, each adding its own slice of real-world variation, rather than a large volume of clean data from one controlled setting.</p>
@@ -108,23 +177,72 @@
 
       <p>One is imitation learning and behavioral cloning, the teleoperation-hungry branch, where methods like ACT and Diffusion Policy learn control directly from human demonstrations. A second is the vision-language-action model, which repurposes the knowledge inside large vision-language models for control, exemplified by Google DeepMind's RT-2 and Physical Intelligence's π0. A third is world models, systems that learn a predictive model of environment dynamics and plan inside it, a lineage running from the original World Models work through DreamerV3, Meta's V-JEPA 2, and NVIDIA's Cosmos world foundation models aimed squarely at physical AI. A fourth is the bet that pure video generation, trained at sufficient scale, implicitly learns physics well enough to be useful downstream for control. That last claim is far from settled. Careful studies such as How Far is Video Generation from World Model: A Physical Law Perspective find that today's generative video models capture some regularities while still missing others, so the jury is out on whether photorealistic prediction alone yields reliable physical understanding. Well-funded labs hedge across these directions and lean on researcher taste, developed over years, to decide where to concentrate. That taste is currently doing a lot of the work that a settled theory eventually will.</p>
 
+      
+      <figure class="figure">
+        <svg id="f5" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four parallel research bets shown as four panels: imitation learning, vision-language-action, world models, and video generation, the last drawn dashed to mark it as unsettled">
+          <style>
+            #f5 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f5 .ttl{font-size:17px;font-weight:700}
+            #f5 .sub{font-size:12.5px;fill:#6a6a6a}
+            #f5 .hd{font-size:15px;font-weight:700}
+            #f5 .nd{font-size:13.5px;font-weight:700}
+            #f5 .bd{font-size:12.5px;fill:#333333}
+            #f5 .sm{font-size:11.5px;fill:#6a6a6a}
+            #f5 .ax{font-size:11.5px;fill:#6a6a6a}
+            #f5 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
+          </style>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">Four bets, no consensus</text>
+          <text x="400" y="54" text-anchor="middle" class="t sub">No approach has proven decisive, so the serious labs hedge across all of them</text>
+          <rect x="24" y="76" width="176" height="128" fill="#ffffff" stroke="#111111"/>
+          <text x="112" y="100" text-anchor="middle" class="t nd">Imitation learning</text>
+          <line x1="40" y1="110" x2="184" y2="110" stroke="#dddddd" stroke-width="1"/>
+          <text x="112" y="130" text-anchor="middle" class="t sm">Copy enough human</text>
+          <text x="112" y="145" text-anchor="middle" class="t sm">demonstrations and the</text>
+          <text x="112" y="160" text-anchor="middle" class="t sm">policy generalises.</text>
+          <text x="112" y="190" text-anchor="middle" class="t sm">ACT · Diffusion Policy</text>
+          <rect x="216" y="76" width="176" height="128" fill="#ffffff" stroke="#111111"/>
+          <text x="304" y="100" text-anchor="middle" class="t nd">Vision-language-action</text>
+          <line x1="232" y1="110" x2="376" y2="110" stroke="#dddddd" stroke-width="1"/>
+          <text x="304" y="130" text-anchor="middle" class="t sm">Repurpose what a model</text>
+          <text x="304" y="145" text-anchor="middle" class="t sm">already knows about the</text>
+          <text x="304" y="160" text-anchor="middle" class="t sm">world for control.</text>
+          <text x="304" y="190" text-anchor="middle" class="t sm">RT-2 · π0</text>
+          <rect x="408" y="76" width="176" height="128" fill="#ffffff" stroke="#111111"/>
+          <text x="496" y="100" text-anchor="middle" class="t nd">World models</text>
+          <line x1="424" y1="110" x2="568" y2="110" stroke="#dddddd" stroke-width="1"/>
+          <text x="496" y="130" text-anchor="middle" class="t sm">Learn the dynamics, then</text>
+          <text x="496" y="145" text-anchor="middle" class="t sm">plan inside the model you</text>
+          <text x="496" y="160" text-anchor="middle" class="t sm">have learned.</text>
+          <text x="496" y="190" text-anchor="middle" class="t sm">DreamerV3 · V-JEPA 2 · Cosmos</text>
+          <rect x="600" y="76" width="176" height="128" fill="#fafafa" stroke="#999999" stroke-dasharray="4 3"/>
+          <text x="688" y="100" text-anchor="middle" class="t nd">Video generation</text>
+          <line x1="616" y1="110" x2="760" y2="110" stroke="#dddddd" stroke-width="1"/>
+          <text x="688" y="130" text-anchor="middle" class="t sm">Predict pixels at enough</text>
+          <text x="688" y="145" text-anchor="middle" class="t sm">scale and the physics</text>
+          <text x="688" y="160" text-anchor="middle" class="t sm">falls out for free.</text>
+          <text x="688" y="190" text-anchor="middle" class="t sm">far from settled</text>
+          <text x="400" y="232" text-anchor="middle" class="t bd">Researcher taste is currently doing the work that a settled theory eventually will.</text>
+        </svg>
+        <figcaption>The fourth is drawn dashed for a reason: careful studies find today's generative video models capture some physical regularities while still missing others.</figcaption>
+      </figure>
+
       <h2>Two constraints that shape the economics</h2>
 
       <p>Two practical facts sit underneath all of this. The first is deployment. The model that ultimately runs on the robot has to fit on modest onboard hardware, roughly gaming-GPU class, which means that for robotics specifically, raw training compute is less of a bottleneck than it is for frontier language models. The second is the shape of the data cost curve, which is likely to mirror what happened with large language models. The easy, high-value data gets collected first, homes and kitchens and common tasks. As that low-hanging fruit is exhausted, progress depends on increasingly rare edge cases, and the cost per useful example climbs steeply. The extreme version is something like egocentric video of a surgeon performing an operation: enormously valuable, and almost impossible to source through a centralized collection effort. This is the strongest structural argument for a wide, open call for contribution, because a large enough network is more likely to reach the rare situations that a centralized team never could.</p>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curve showing cost per useful training example staying flat while common data is collected, then climbing steeply once only rare edge cases remain">
+        <svg id="f2" viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curve showing cost per useful training example staying flat while common data is collected, then climbing steeply once only rare edge cases remain">
           <style>
-            .t2{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            .ttl2{font-size:17px;font-weight:700}
-            .sub2{font-size:12.5px;fill:#6a6a6a}
-            .nd2{font-size:14px;font-weight:700}
-            .bd2{font-size:12px;fill:#333333}
-            .ax2{font-size:11.5px;fill:#6a6a6a}
-            .axis2{stroke:#999999;stroke-width:1}
+            #f2 .t2{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f2 .ttl2{font-size:17px;font-weight:700}
+            #f2 .sub2{font-size:12.5px;fill:#6a6a6a}
+            #f2 .nd2{font-size:14px;font-weight:700}
+            #f2 .bd2{font-size:12px;fill:#333333}
+            #f2 .ax2{font-size:11.5px;fill:#6a6a6a}
+            #f2 .axis2{stroke:#999999;stroke-width:1}
           </style>
-          <text x="24" y="34" class="t2 ttl2">The cost curve of the last mile</text>
-          <text x="24" y="54" class="t2 sub2">Cost per useful example as coverage of the real distribution grows</text>
+          <text x="400" y="34" text-anchor="middle" class="t2 ttl2">The cost curve of the last mile</text>
+          <text x="400" y="54" text-anchor="middle" class="t2 sub2">Cost per useful example as coverage of the real distribution grows</text>
           <line x1="100" y1="96" x2="100" y2="286" class="axis2"/>
           <line x1="100" y1="286" x2="762" y2="286" class="axis2"/>
           <text x="94" y="102" text-anchor="end" class="t2 ax2">high</text>
