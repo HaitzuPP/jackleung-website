@@ -26,7 +26,12 @@
       <p>In digital AI, iteration is cheap: generate, score, repeat, a million times before lunch. In robotics, every iteration costs a real robot doing a real thing in real time, and the scoring is slow, expensive, and hard to standardise. The teams that win will industrialise evaluation, not just train the biggest model.</p>
 
       <figure class="figure">
-        <svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram contrasting the fast iteration loop of digital AI against the slow real-time loop of physical AI">
+        <svg viewBox="0 0 800 288" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram contrasting the fast iteration loop of digital AI, shown as a dense field of tick marks, against the single tick of physical AI running at real time">
+          <defs>
+            <pattern id="rtick" width="13" height="9" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="3" height="5" fill="#111111"/>
+            </pattern>
+          </defs>
           <style>
             .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
             .ttl{font-size:17px;font-weight:700}
@@ -36,19 +41,24 @@
             .sm{font-size:12px;fill:#6a6a6a}
           </style>
           <text x="24" y="34" class="t ttl">Two iteration loops, orders of magnitude apart</text>
-          <line x1="400" y1="56" x2="400" y2="232" stroke="#dddddd" stroke-width="1"/>
+          <line x1="400" y1="56" x2="400" y2="268" stroke="#dddddd" stroke-width="1"/>
           <!-- left: digital -->
           <text x="40" y="80" class="t hd">Digital AI</text>
           <text x="40" y="104" class="t bd">Generate a policy, score it against data,</text>
           <text x="40" y="120" class="t bd">repeat. The environment is free and instant.</text>
-          <text x="40" y="176" class="t big">~10⁶ / day</text>
-          <text x="40" y="200" class="t sm">Iterations are effectively unlimited.</text>
+          <rect x="40" y="138" width="312" height="36" fill="url(#rtick)" stroke="#eeeeee" stroke-width="1"/>
+          <text x="40" y="192" class="t sm">Each mark is one evaluation run.</text>
+          <text x="40" y="228" class="t big">~10⁶ / day</text>
+          <text x="40" y="252" class="t sm">Iterations are effectively unlimited.</text>
           <!-- right: physical -->
           <text x="432" y="80" class="t hd">Physical AI</text>
           <text x="432" y="104" class="t bd">Every trial is one robot doing one real</text>
           <text x="432" y="120" class="t bd">task, scored slowly and by hand.</text>
-          <text x="432" y="176" class="t big">1× real time</text>
-          <text x="432" y="200" class="t sm">You cannot speed up reality.</text>
+          <rect x="432" y="138" width="312" height="36" fill="none" stroke="#eeeeee" stroke-width="1"/>
+          <rect x="434" y="140" width="3" height="5" fill="#111111"/>
+          <text x="432" y="192" class="t sm">Same window. One run.</text>
+          <text x="432" y="228" class="t big">1× real time</text>
+          <text x="432" y="252" class="t sm">You cannot speed up reality.</text>
         </svg>
         <figcaption>The bottleneck is not model capacity. Digital systems iterate a million times before a robot completes a single evaluation run.</figcaption>
       </figure>
