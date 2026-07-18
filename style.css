@@ -174,13 +174,6 @@ section + section {
   line-height: 1.12;
   margin: 0 0 0.5rem;
 }
-.post-head .standfirst {
-  font-size: 1.2rem;
-  font-style: italic;
-  line-height: 1.42;
-  color: var(--ink-soft);
-  margin: 0;
-}
 
 .article { font-size: 1.06rem; line-height: 1.6; }
 .article h2 {
@@ -231,7 +224,7 @@ section + section {
 }
 
 /* ---------- Key takeaway highlights ----------
-   Three per essay, reserved for the load-bearing claims only.
+   One sentence per essay, reserved for the single load-bearing claim.
    Tint is the link blue (#1772d0) at ~14% on white, so it sits
    inside the existing palette rather than introducing a new colour. */
 .article mark.hl {
