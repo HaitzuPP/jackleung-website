@@ -110,28 +110,7 @@ section + section {
 .links a { display: inline-flex; align-items: center; gap: 0.4rem; }
 .links svg { width: 16px; height: 16px; flex: 0 0 auto; }
 
-/* ---------- Company / venture lists ---------- */
-.holdings { list-style: none; margin: 0.2rem 0 0; padding: 0; }
-.holdings li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.4rem 0;
-}
-.holdings .h-name { font-weight: 700; }
-.holdings .h-name a { color: var(--link); }
-.holdings .h-name a:hover { color: var(--link-hov); }
-.holdings .h-desc { color: var(--ink-soft); font-weight: 400; }
-.holdings .h-role {
-  flex: 0 0 auto;
-  font-style: italic;
-  font-size: 0.92rem;
-  color: var(--ink-faint);
-  white-space: nowrap;
-}
-
-/* ---------- Writings list ---------- */
+/* ---------- Essay list ---------- */
 .posts { list-style: none; margin: 0; padding: 0; }
 .posts a.post-link {
   display: flex;
@@ -140,21 +119,12 @@ section + section {
   gap: 1.25rem;
   padding: 0.55rem 0;
 }
-.posts .post-main { display: flex; flex-direction: column; gap: 0.12rem; }
 .posts .post-title { font-size: 1.1rem; }
-.posts .post-dek { font-size: 0.9rem; color: var(--ink-faint); line-height: 1.35; }
 .posts .post-date {
   flex: 0 0 auto;
   font-size: 0.95rem;
   color: var(--ink-faint);
   white-space: nowrap;
-}
-
-/* ---------- Footer ---------- */
-.site-foot {
-  margin-top: 3rem;
-  font-size: 0.92rem;
-  color: var(--ink-faint);
 }
 
 /* ============================================================
@@ -236,20 +206,17 @@ section + section {
   -webkit-box-decoration-break: clone;
 }
 
-
 /* ---------- Newsletter subscribe ---------- */
 .subscribe {
-  margin-top: 2.6rem;
-  padding: 1.5rem 1.5rem 1.6rem;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: #fafafa;
+  margin-top: 2.8rem;
+  padding: 1.5rem 0 0.4rem;
+  border-top: 1px solid var(--line);
   text-align: center;
 }
 .subscribe .sub-h {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.8rem;
 }
 .sub-form {
   display: flex;
@@ -258,15 +225,15 @@ section + section {
   justify-content: center;
 }
 .sub-form input[type="email"] {
-  flex: 0 1 20rem;
+  flex: 0 1 18rem;
   min-width: 0;
   text-align: center;
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--ink);
   background: #ffffff;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid #b8b8b8;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #c4c4c4;
   border-radius: 3px;
 }
 .sub-form input[type="email"]:focus {
@@ -277,11 +244,11 @@ section + section {
 .sub-form button {
   flex: 0 0 auto;
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #ffffff;
   background: var(--ink);
-  padding: 0.55rem 1.3rem;
+  padding: 0.45rem 1.1rem;
   border: 1px solid var(--ink);
   border-radius: 3px;
   cursor: pointer;
@@ -334,13 +301,42 @@ section + section {
 }
 .post-foot-nav .pfn-title { font-size: 1.02rem; line-height: 1.3; }
 
+/* ---------- Keyboard focus ----------
+   The site had no focus style, so keyboard users could not see their position.
+   :focus-visible keeps the ring off mouse clicks. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 /* ---------- Small screens ---------- */
 @media (max-width: 620px) {
   body { font-size: 18px; }
   .masthead { flex-direction: column-reverse; align-items: flex-start; gap: 1rem; }
   .masthead .photo { width: 150px; height: 150px; }
-  .holdings li,
   .posts a.post-link { flex-direction: column; gap: 0.1rem; }
-  .holdings .h-role { font-size: 0.88rem; }
+
+  /* larger tap targets */
+  .post-nav a { display: inline-block; padding: 0.45rem 0; }
+  .sub-form input[type="email"],
+  .sub-form button { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+}
+
+/* ---------- Figures on narrow screens ----------
+   An 800-unit figure squeezed into a 327px phone renders its smallest labels
+   at ~4.5px, which is unreadable. Hold a legible minimum width and let the
+   figure scroll on its own axis; the caption stays pinned to the left edge. */
+@media (max-width: 700px) {
+  .figure {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .figure svg { min-width: 700px; }
+  .figure figcaption {
+    position: sticky;
+    left: 0;
+  }
 }
