@@ -74,7 +74,7 @@
 
       <p>The first is teleoperation, where a human directly drives the robot and the system records what happens. Its decisive advantage is the absence of an embodiment gap. Because the data is generated on the same hardware you deploy on, a policy trained from it has a high chance of transferring, and the problem becomes tractable in a way it otherwise would not be. This is the approach behind the low-cost bimanual work like Stanford's ALOHA and ACT, and it anchors large in-the-wild collections such as DROID. The catch is scale. Teleoperation is slow and expensive because a person has to be in the loop for every trajectory. Autonomous driving is where that economics inverts, because the largest teleoperation dataset on earth belongs to companies whose customers are, in effect, driving robots on wheels all day and paying for the privilege. That works only because the robot is already useful enough that people pay to operate it. For almost every other robot, the machine cannot yet do anything valuable on its own, so someone has to pay for the data or design a game that makes people want to generate it.</p>
 
-      <p>The second source is simulation. On paper it is the obvious answer, since you can run environments in parallel and compress time by orders of magnitude. In practice it is bounded by two things that are easy to underestimate. The first is the sim-to-real gap: simulation is a subset of reality, and policies that look perfect in the simulator can fail on contact with the world. Techniques like domain randomization were developed precisely to bridge this, and they carried real milestones such as OpenAI's dexterous in-hand manipulation. Simulation works best where the environment is static and the contact dynamics are simple. Humanoid locomotion and dancing, largely solved in simulation, are the poster children, because the ground is flat and nothing else is moving. It breaks down in dynamic, contact-rich tasks. Folding a shirt is the hard case: the fabric deforms in response to your action, which creates a tight feedback loop that simulators model poorly. The second bound is less obvious and more important. The bottleneck in simulation is not compute, it is talent and allocation. The space of scenarios you could simulate is effectively infinite, while your compute is finite, so a skilled simulation researcher functions like a portfolio manager deciding where to spend it. The failure mode is not running out of compute. It is failing to simulate the scenario that would have mattered, because no one thought to spend compute on it. Useful simulation targets physical fidelity rather than visual polish. The goal is accurate dynamics, not a photorealistic game engine.</p>
+      <p>The second source is simulation. On paper it is the obvious answer, since you can run environments in parallel and compress time by orders of magnitude. In practice it is bounded by two things that are easy to underestimate. The first is the sim-to-real gap: simulation is a subset of reality, and policies that look perfect in the simulator can fail on contact with the world. Techniques like domain randomization were developed precisely to bridge this, and they carried real milestones such as OpenAI's dexterous in-hand manipulation. Simulation works best where the environment is static and the contact dynamics are simple. Humanoid locomotion and dancing, largely solved in simulation, are the poster children, because the ground is flat and nothing else is moving. It breaks down in dynamic, contact-rich tasks. Folding a shirt is the hard case: the fabric deforms in response to your action, which creates a tight feedback loop that simulators model poorly. Take the funding pattern as the example of where this layer is being priced. Applied Intuition raised a $600 million Series F at a $15 billion valuation for turning sensor logs and synthetic scenarios into validation workflows, and Foretellix has raised around $135 million doing scenario generation and safety evaluation, both anchored in autonomous vehicles rather than general robotics. The alternatives are not venture-funded at all: NVIDIA ships Isaac and Omniverse as an extension of its GPU platform, and MuJoCo, the physics engine most of the research field actually runs on, is open source under Google DeepMind. A standalone simulator therefore competes against a chip vendor bundling it and a free engine backed by Alphabet, which is a hard place to price from. The second bound is less obvious and more important. The bottleneck in simulation is not compute, it is talent and allocation. The space of scenarios you could simulate is effectively infinite, while your compute is finite, so a skilled simulation researcher functions like a portfolio manager deciding where to spend it. The failure mode is not running out of compute. It is failing to simulate the scenario that would have mattered, because no one thought to spend compute on it. Useful simulation targets physical fidelity rather than visual polish. The goal is accurate dynamics, not a photorealistic game engine.</p>
 
       <p>The third source is human data, meaning ordinary egocentric video from a camera worn on the head. It is cheap and effortless to collect, which is why there is enormous momentum behind it right now. Historically it was considered close to useless for robotics, because manipulation demands precise three-dimensional information. The difference between a successful grasp and a dropped object can be a millimetre, and flat video does not obviously provide that. What changed is computer vision. Recovering depth from a single camera has moved from marginal to reliable, through work like MiDaS and more recently Depth Anything V2, and adding a second camera for stereo improves it further. Combined with advances in hand and pose tracking, this makes egocentric video newly usable as a training signal. Large-scale egocentric datasets such as Meta's Ego4D and Ego-Exo4D existed for years before the field could really exploit them. Only recently have the surrounding tools caught up enough to turn that video into something a policy can learn from.</p>
 
@@ -113,6 +113,58 @@
           <text x="635" y="241" text-anchor="end" class="t nd">Egocentric video</text>
           <text x="635" y="259" text-anchor="end" class="t bd">Cheap, effortless, diverse.</text>
           <text x="635" y="273" text-anchor="end" class="t bd">Usable only now depth is solved.</text>
+        </svg>
+      </figure>
+
+      <p>Take the public disclosures as the example of how little anyone actually has. Generalist has disclosed roughly 500,000 real-world interaction hours from human wearable pretraining, NVIDIA about 40,000 training hours split between real and simulated, AgiBot 27,300 across robot, UMI and human sources, and GigaAI 10,931 of which more than half were generated rather than captured. Figure has disclosed a little over 1,000 hours of retargeted human motion, and 1X around 900 hours of human video against 70 hours of robot data. The numbers span three orders of magnitude, they measure different things at different model stages, and none of them is remotely close to the scale that made language models work.</p>
+
+      <figure class="figure">
+        <svg id="f6" viewBox="0 0 800 378" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Log-scale bar chart of publicly disclosed robot training hours by company, from 1X at 900 hours to Generalist at 500,000 hours">
+          <style>
+            #f6 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
+            #f6 .ttl{font-size:17px;font-weight:700}
+            #f6 .nm{font-size:13.5px;font-weight:700}
+            #f6 .sm{font-size:11px;fill:#6a6a6a}
+            #f6 .val{font-size:13px;font-weight:700}
+            #f6 .valo{font-size:13px;font-weight:700;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round}
+            #f6 .ax{font-size:11px;fill:#6a6a6a}
+          </style>
+          <text x="400" y="34" text-anchor="middle" class="t ttl">Three orders of magnitude apart, and not directly comparable</text>
+          <line x1="377.5" y1="76" x2="377.5" y2="318" stroke="#eeeeee" stroke-width="1"/>
+          <line x1="505" y1="76" x2="505" y2="318" stroke="#eeeeee" stroke-width="1"/>
+          <line x1="632.5" y1="76" x2="632.5" y2="318" stroke="#eeeeee" stroke-width="1"/>
+          <line x1="760" y1="76" x2="760" y2="318" stroke="#eeeeee" stroke-width="1"/>
+          <rect x="250" y="96" width="471.6" height="22" fill="#111111"/>
+          <text x="713" y="111" text-anchor="end" class="t val" style="fill:#ffffff">500K hrs</text>
+          <text x="240" y="111" text-anchor="end" class="t nm">Generalist</text>
+          <text x="240" y="125" text-anchor="end" class="t sm">human wearable pretraining</text>
+          <rect x="250" y="136" width="331.8" height="22" fill="#777777"/>
+          <text x="590" y="152" class="t valo">~40K hrs</text>
+          <text x="240" y="151" text-anchor="end" class="t nm">NVIDIA</text>
+          <text x="240" y="165" text-anchor="end" class="t sm">~32K real, ~8K simulated</text>
+          <rect x="250" y="176" width="310.6" height="22" fill="#777777"/>
+          <text x="569" y="192" class="t valo">27.3K hrs</text>
+          <text x="240" y="191" text-anchor="end" class="t nm">AgiBot</text>
+          <text x="240" y="205" text-anchor="end" class="t sm">17.8K robot, 6.5K UMI, 3K human</text>
+          <rect x="250" y="216" width="260" height="22" fill="#999999"/>
+          <text x="518" y="232" class="t valo">10,931 hrs</text>
+          <text x="240" y="231" text-anchor="end" class="t nm">GigaAI</text>
+          <text x="240" y="245" text-anchor="end" class="t sm">4,278 real, 6,653 generated</text>
+          <rect x="250" y="256" width="127.5" height="22" fill="#bbbbbb"/>
+          <text x="386" y="272" class="t valo">1K+ hrs</text>
+          <text x="240" y="271" text-anchor="end" class="t nm">Figure</text>
+          <text x="240" y="285" text-anchor="end" class="t sm">retargeted human motion</text>
+          <rect x="250" y="296" width="121.6" height="22" fill="#bbbbbb"/>
+          <text x="380" y="312" class="t valo">900 hrs</text>
+          <text x="240" y="311" text-anchor="end" class="t nm">1X</text>
+          <text x="240" y="325" text-anchor="end" class="t sm">human video, plus 70 robot hours</text>
+          <line x1="250" y1="330" x2="760" y2="330" stroke="#999999" stroke-width="1"/>
+          <text x="250" y="344" text-anchor="middle" class="t ax">100</text>
+          <text x="377.5" y="344" text-anchor="middle" class="t ax">1K</text>
+          <text x="505" y="344" text-anchor="middle" class="t ax">10K</text>
+          <text x="632.5" y="344" text-anchor="middle" class="t ax">100K</text>
+          <text x="760" y="344" text-anchor="middle" class="t ax">1M</text>
+          <text x="505" y="362" text-anchor="middle" class="t sm">Disclosed training hours, log scale. Company-reported, different model stages, not directly comparable.</text>
         </svg>
       </figure>
 
