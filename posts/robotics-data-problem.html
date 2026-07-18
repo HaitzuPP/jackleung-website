@@ -16,7 +16,7 @@
     <nav class="post-nav"><a href="../index.html">← Home</a></nav>
 
     <header class="post-head">
-      <p class="post-meta">Writings · July 15, 2026</p>
+      <p class="post-meta">Essays · July 15, 2026</p>
       <h1>Robotics Data Problem</h1>
       <p class="standfirst">What building a physical AI company teaches you about where the field is actually stuck</p>
     </header>
@@ -24,11 +24,11 @@
     <article class="article">
       <p>For most of the last decade, robotics was close to uninvestable. Hardware carried high fixed costs and stubbornly high variable costs, the opposite of the near-zero marginal economics that made software compounding so attractive to venture capital. The skepticism was rational. What changed is not that the hardware got dramatically cheaper. What changed is that a learning-based approach to control, driven by data and compute rather than hand-written rules, started to do things that were previously impossible. That shift is best understood as a phase change rather than an incremental improvement, and it reframes the whole question of what a robotics company should actually be building.</p>
 
-      <p>The clearest way to see the shift is to separate the ingredients of a capable physical AI model. There are four: talent, compute, data, and evaluation. The first two are broadly understood and heavily funded. <mark class="hl">The interesting argument, and the one that determines who wins, is that data and evaluation are the real constraints in the physical world, and that both are far harder to scale than in the digital domain.</mark> Everything below follows from taking that claim seriously.</p>
+      <p>The clearest way to see the shift is to separate the ingredients of a capable physical AI model. There are four: talent, compute, data, and evaluation. The first two are broadly understood and heavily funded. The interesting argument, and the one that determines who wins, is that data and evaluation are the real constraints in the physical world, and that both are far harder to scale than in the digital domain. Everything below follows from taking that claim seriously.</p>
 
       <h2>Why a model trained in one kitchen breaks in the next</h2>
 
-      <p>Start with the failure mode that motivates everything else. A large fraction of physical AI data today is collected in controlled environments that are effectively movie sets: warehouse-built kitchens and bedrooms designed to look like the real thing. Train a manipulation policy on demonstrations collected in one of those rooms and it will perform well in that exact room. Move it to a different kitchen, with different light, different counter height, different clutter, and it degrades sharply. <mark class="hl">The policy learned the set, not the task.</mark></p>
+      <p>Start with the failure mode that motivates everything else. A large fraction of physical AI data today is collected in controlled environments that are effectively movie sets: warehouse-built kitchens and bedrooms designed to look like the real thing. Train a manipulation policy on demonstrations collected in one of those rooms and it will perform well in that exact room. Move it to a different kitchen, with different light, different counter height, different clutter, and it degrades sharply. The policy learned the set, not the task.</p>
 
       <p>The technical name for what is missing is diversity, and it is not a nice-to-have. It is the thing that produces generalization. This is a physical restatement of Rich Sutton's Bitter Lesson: general methods that scale with data and compute reliably beat clever, hand-engineered structure over the long run. In robotics, scaling with data specifically means scaling across the real distribution of environments the robot will actually encounter. You cannot get that distribution from a warehouse. You get it from the world, which is why the collection problem becomes a coverage problem rather than a volume problem alone.</p>
 
@@ -273,8 +273,7 @@
     </article>
 
       <section class="subscribe" aria-labelledby="sub-h">
-        <p class="sub-h" id="sub-h">Get new essays by email</p>
-        <p class="sub-dek">Occasional writing on data, open source, and where capital is going next. No spam, and one click to leave.</p>
+        <p class="sub-h" id="sub-h">Be notified of new essays</p>
         <form class="sub-form" action="https://buttondown.com/api/emails/embed-subscribe/jackaileung" method="post" target="_blank" rel="noopener" novalidate>
           <label class="sr-only" for="sub-email">Email address</label>
           <input id="sub-email" type="email" name="email" placeholder="you@firm.com" autocomplete="email" required>
