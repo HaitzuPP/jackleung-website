@@ -44,7 +44,6 @@
             #f1 .sm{font-size:11.5px;fill:#6a6a6a}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">What encryption actually covers</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">The letter is protected. The envelope is not.</text>
           <text x="24" y="84" class="t hd">The letter</text>
           <rect x="24" y="94" width="560" height="46" fill="#111111"/>
           <text x="304" y="123" text-anchor="middle" class="t nd" style="fill:#ffffff">Contents of the message</text>
@@ -62,7 +61,6 @@
           <text x="400" y="258" text-anchor="middle" class="t bd">Visible to the provider, and to anyone who can watch the link.</text>
           <text x="400" y="280" text-anchor="middle" class="t sm">Against a correlation model this is frequently the more revealing half.</text>
         </svg>
-        <figcaption>The black band is the part the industry spent a decade protecting. The four open boxes are what still leaks by default, on every encrypted app.</figcaption>
       </figure>
 
       <h2>AI turned privacy from an ideology into a paid product</h2>
@@ -71,7 +69,7 @@
 
       <h2>Access itself is becoming the scarce good</h2>
 
-      <p>The valuable half of the web is moving behind anti-bot walls, and the economics of that are shifting from exclusion to tolling. Cloudflare is the clearest signal, moving from blocking crawlers toward charging them through pay-per-crawl and signed-agent identity. Courts have so far largely protected the scraping of public data, so the contest is migrating from whether you may read the web to what you pay and how you prove who you are. In both cases reaching the content requires residential access rather than a datacenter IP, which turns plain reachability into a priced input.</p>
+      <p>The valuable half of the web is moving behind anti-bot walls, and the economics of that are shifting from exclusion to tolling. Cloudflare shows the shift most clearly, moving from blocking crawlers toward charging them through pay-per-crawl and signed-agent identity. Courts have so far largely protected the scraping of public data, so the contest is migrating from whether you may read the web to what you pay and how you prove who you are. In both cases reaching the content requires residential access rather than a datacenter IP, which turns plain reachability into a priced input.</p>
 
       <p>The censorship side of this is the same problem with higher stakes. National firewalls in China, Russia and Iran block by IP address, and datacenter VPN ranges are trivially enumerated and cut. Roughly ninety percent of Iranian internet users depend on a VPN, and 2025 was the worst year on record for deliberate shutdowns. The users for whom privacy is daily-critical are therefore the users a datacenter VPN cannot reliably serve. The hardest segment to serve and the most defensible product to build require the same architecture.</p>
 
@@ -79,7 +77,7 @@
 
       <p>Consumer privacy is a commoditised race to roughly five dollars a month, competing on server counts and streaming unblocks rather than on any property a privacy engineer would recognise. The decentralised cohort that tried to fix this on ideology lost badly: Nym and Orchid both drew down more than ninety-nine percent, not because the cryptography failed but because the demand never arrived. The clearest measure of that gap is that only about six percent of US adults use a data-removal service, set against a data-broker industry worth hundreds of billions. Demand is loud in surveys and thin in wallets, and that gap has killed every consumer privacy company that mistook stated preference for willingness to pay.</p>
 
-      <p>The exception proves where the money actually is. Grass worked by selling verifiable residential access and web data to businesses rather than shipping another consumer app, which is the same conclusion the incumbent market reached long ago. Residential access is a one-and-a-half to two billion dollar market, and Bright Data alone runs at roughly three hundred million in annual recurring revenue. The buyer is a company with a procurement process, not a consumer choosing between a VPN and a coffee.</p>
+      <p>Grass is the exception, and it locates the money precisely. Grass worked by selling verifiable residential access and web data to businesses rather than shipping another consumer app, which is the same conclusion the incumbent market reached long ago. Residential access is a one-and-a-half to two billion dollar market, and Bright Data alone runs at roughly three hundred million in annual recurring revenue. The buyer is a company with a procurement process, not a consumer choosing between a VPN and a coffee.</p>
 
       <figure class="figure">
         <svg id="f2" viewBox="0 0 800 292" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two columns contrasting the business access market where demand paid against the consumer and token markets where it did not">
@@ -93,7 +91,6 @@
             #f2 .sm{font-size:11.5px;fill:#6a6a6a}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">Two markets, one of which paid</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">The same technology, sold to two different buyers</text>
           <line x1="400" y1="74" x2="400" y2="272" stroke="#dddddd" stroke-width="1"/>
           <text x="40" y="98" class="t hd">Sold to businesses</text>
           <text x="40" y="142" class="t big">$1.5&#8211;2B</text>
@@ -108,7 +105,6 @@
           <text x="432" y="224" class="t sm">token drawdown, Nym and Orchid</text>
           <text x="432" y="256" class="t bd">Stated preference, never converted.</text>
         </svg>
-        <figcaption>The cryptography was never the variable. The networks that sold verifiable access to companies built revenue; the ones that sold privacy to individuals did not.</figcaption>
       </figure>
 
       <h2>What the comparables actually prove</h2>
@@ -116,7 +112,7 @@
       <p>The claim that privacy does not sell is wrong, and the comparables settle it. Proton runs roughly $134 million in revenue on 671 employees, NordVPN about $357 million at a $3 billion valuation on 1,800 people, and DuckDuckGo around $200 million on 335. On the enterprise side the numbers are an order of magnitude larger: Zscaler at $3.36 billion in ARR growing 25 percent, Cloudflare at $2.81 billion growing 30 percent, both public, and Tailscale at $45 million ARR on $275 million raised at a $1.5 billion valuation. This is a multi-billion dollar market on both sides of the house.</p>
 
       <figure class="figure">
-        <svg id="f4" viewBox="0 0 800 348" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Log-scale bar chart of annual revenue for consumer privacy companies Proton, NordVPN and DuckDuckGo against enterprise access companies Zscaler, Cloudflare and Tailscale">
+        <svg id="f4" viewBox="0 0 800 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Log-scale bar chart of annual revenue for consumer privacy companies Proton, NordVPN and DuckDuckGo against enterprise access companies Zscaler, Cloudflare and Tailscale">
           <style>
             #f4 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
             #f4 .ttl{font-size:17px;font-weight:700}
@@ -129,7 +125,6 @@
             #f4 .ax{font-size:11px;fill:#6a6a6a}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">Both halves of this market already pay</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">Annual revenue or ARR, log scale</text>
           <line x1="274.7" y1="76" x2="274.7" y2="332" stroke="#eeeeee" stroke-width="1"/>
           <line x1="351.5" y1="76" x2="351.5" y2="332" stroke="#eeeeee" stroke-width="1"/>
           <line x1="529.7" y1="76" x2="529.7" y2="332" stroke="#eeeeee" stroke-width="1"/>
@@ -167,13 +162,13 @@
           <text x="529.7" y="345" text-anchor="middle" class="t ax">$500M</text>
           <text x="606.5" y="345" text-anchor="middle" class="t ax">$1B</text>
           <text x="728" y="345" text-anchor="middle" class="t ax">$3B</text>
+                  <text x="505" y="362" text-anchor="middle" class="t ax">US$, log scale</text>
         </svg>
-        <figcaption>A log axis, because the enterprise names are an order of magnitude larger. Note what none of these six sell: not one of them prices metadata privacy at the network layer.</figcaption>
       </figure>
 
-      <p>What each proves is more useful than the totals. NordVPN is the Coca-Cola of consumer VPNs, an empire built on marketing and distribution rather than on any cryptographic advantage, which is the clearest evidence that consumer privacy is won on brand rather than on architecture. DuckDuckGo shows you can monetise without a profile, matching ads to the query instead of the person. Proton shows the suite compounds: it started as encrypted email and grew into mail, VPN, drive and calendar, open source and without ads, so each product lowers the cost of selling the next.</p>
+      <p>The totals matter less than what each company demonstrates. NordVPN is the Coca-Cola of consumer VPNs, an empire built on marketing and distribution rather than on any cryptographic advantage, which is the clearest evidence that consumer privacy is won on brand rather than on architecture. DuckDuckGo shows you can monetise without a profile, matching ads to the query instead of the person. Proton shows the suite compounds: it started as encrypted email and grew into mail, VPN, drive and calendar, open source and without ads, so each product lowers the cost of selling the next.</p>
 
-      <p>The enterprise names prove something more valuable to anyone building at the network layer. Zscaler routes all of a company's traffic through its own cloud and replaces VPN access with per-app, identity-based access, and the market pays $3.36 billion a year for it. Cloudflare arrived from the opposite direction, as a CDN and security business, and now positions Zero Trust and WARP as the VPN replacement. Both are re-architecting how companies reach the network, and both are being paid billions to do it. Tailscale is the instructive small one: $45 million in ARR built by winning individual developers with simple mesh networking and letting them pull their employers in behind them, which is the distribution model any technical network product should study.</p>
+      <p>The enterprise names prove something more valuable to anyone building at the network layer. Zscaler routes all of a company's traffic through its own cloud and replaces VPN access with per-app, identity-based access, and the market pays $3.36 billion a year for it. Cloudflare arrived from the opposite direction, as a CDN and security business, and now positions Zero Trust and WARP as the VPN replacement. Both are re-architecting how companies reach the network, and both are being paid billions to do it. Tailscale is the smallest of the six and the most instructive: $45 million in ARR built by winning individual developers with simple mesh networking and letting them pull their employers in behind them, which is the distribution model any technical network product should study.</p>
 
       <p>Read the two groups together and the gap is obvious. The consumer names sell brand and convenience. The enterprise names sell access control and identity. Not one of the six sells metadata privacy, because none of them owns the layer where metadata is produced. That is the same conclusion the failed token cohort reached from the other side, and it is why the opportunity sits underneath all six rather than alongside them.</p>
 
@@ -192,7 +187,6 @@
             #f3 .sm{font-size:11.5px;fill:#6a6a6a}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">The gap is underneath the apps</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">Where a decade of privacy engineering went, and where it did not</text>
           <rect x="40" y="88" width="470" height="46" fill="#f5f5f5" stroke="#999999"/>
           <text x="275" y="117" text-anchor="middle" class="t lb">Applications</text>
           <text x="530" y="108" class="t bd">Signal, Proton, private AI.</text>
@@ -207,20 +201,19 @@
           <text x="530" y="237" class="t sm">Where censorship is actually enforced.</text>
           <text x="400" y="278" text-anchor="middle" class="t bd">Encryption covers the top band. Everything the adversary actually uses sits below it.</text>
         </svg>
-        <figcaption>Content-privacy apps sit on top of a layer they do not control. That layer decides whether they are reachable at all, and it is the one nobody has built as a business.</figcaption>
       </figure>
 
       <h2>What a network-layer answer requires</h2>
 
       <p>The specification is four requirements, and each one raises the cost of the next. Traffic exits through real residential addresses, because those stay authentic and unblockable when datacenter ranges get cut. Entry is decentralised and self-healing, rotating across many addresses so a censor blocking known entry points does not sever the network. Verification is mechanical rather than promised: each address is proven live, residential and performant, which converts trust our nodes into verify our nodes. Revenue comes from usage rather than emissions, because a network that needs token incentives to survive stops the day the incentives do.</p>
 
-      <p>URNetwork is the clearest attempt at building all four together, and it is far enough along to be judged on operating facts rather than intent: more than one hundred thousand residential providers carrying encrypted traffic for over three hundred and fifty thousand monthly users, organised as roughly two hundred top-tier nodes with their own on-chain identity above a long tail in pools that supplies geographic density. A Bittensor subnet funds and scores the supply side so coverage grows faster than organic demand would allow, and a business VPN aimed at developers and smaller companies earns revenue today.</p>
+      <p>URNetwork is the furthest along on all four together, and it is far enough along to be judged on operating facts rather than intent: more than one hundred thousand residential providers carrying encrypted traffic for over three hundred and fifty thousand monthly users, organised as roughly two hundred top-tier nodes with their own on-chain identity above a long tail in pools that supplies geographic density. A Bittensor subnet funds and scores the supply side so coverage grows faster than organic demand would allow, and a business VPN aimed at developers and smaller companies earns revenue today.</p>
 
       <h2>The two costs that killed the category</h2>
 
       <p>Every previous attempt at network-level privacy failed on one of two taxes. The first is latency, and Nym is the cautionary case: a mixnet that genuinely obscured traffic patterns and was too slow for anyone to use voluntarily. The second is crypto friction, where a wallet, a token and a bridge sit between a person and a working VPN, which loses the entire non-crypto market immediately. Any winner has to deliver network-layer privacy without either, which in practice means the token has to be invisible behind a product that behaves like software people already know how to use.</p>
 
-      <p>The latency tax is a function of hop count, and that is the whole engineering trade-off. A single-server VPN is one hop: fast, and the operator sees everything. Tor takes three relays and pays for it in hundreds of milliseconds. A mixnet adds batching and cover traffic, which is what actually defeats timing analysis, and costs seconds. Multi-hop routing across two or three residential nodes sits in between: no single node sees the full path, and the cost is still measured in milliseconds rather than seconds. That is the position worth holding, and the open research question is how much partial mixing can be borrowed from the mixnet literature before the speed advantage disappears.</p>
+      <p>The latency tax is a function of hop count, and that relationship sets the ceiling on every design in the category. A single-server VPN is one hop: fast, and the operator sees everything. Tor takes three relays and pays for it in hundreds of milliseconds. A mixnet adds batching and cover traffic, which is what actually defeats timing analysis, and costs seconds. Multi-hop routing across two or three residential nodes sits in between: no single node sees the full path, and the cost is still measured in milliseconds rather than seconds. That is the position worth holding, and the open research question is how much partial mixing can be borrowed from the mixnet literature before the speed advantage disappears. The tiers below are orders of magnitude rather than benchmarks.</p>
 
       <figure class="figure">
         <svg id="f5" viewBox="0 0 800 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scatter chart plotting metadata privacy against latency for single-server VPNs, peer dVPNs, multi-hop routing, Tor and mixnets, with a research target above multi-hop routing">
@@ -239,11 +232,11 @@
             #f5 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">Every extra hop buys privacy and costs speed</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">Metadata privacy against the latency you pay for it</text>
           <line x1="90" y1="76" x2="90" y2="292" stroke="#999999" stroke-width="1"/>
           <line x1="90" y1="292" x2="762" y2="292" stroke="#999999" stroke-width="1"/>
           <text x="96" y="72" class="t ax">Metadata privacy, higher is better</text>
           <text x="426" y="336" text-anchor="middle" class="t ax">Latency and UX cost, further right is slower</text>
+          <text x="426" y="360" text-anchor="middle" class="t sm">Illustrative positioning. Latency shown as order-of-magnitude tiers, not benchmarks.</text>
           <text x="200" y="310" text-anchor="middle" class="t ax">~ +ms</text>
           <text x="430" y="310" text-anchor="middle" class="t ax">~ +100s of ms</text>
           <text x="660" y="310" text-anchor="middle" class="t ax">~ +seconds</text>
@@ -267,7 +260,6 @@
           <text x="690" y="92" text-anchor="middle" class="t nm">Mixnet</text>
           <text x="690" y="106" text-anchor="middle" class="t sm">batching and cover traffic</text>
         </svg>
-        <figcaption>Positioning is illustrative and the latency axis shows order-of-magnitude tiers rather than benchmarks. The prize is the empty space above multi-hop routing: traffic-analysis resistance that most decentralised VPNs lack, at a speed a mixnet cannot offer.</figcaption>
       </figure>
 
       <h2>The honest objection</h2>

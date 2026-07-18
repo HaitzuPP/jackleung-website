@@ -26,11 +26,11 @@
     <article class="article">
       <p>For most of the last decade, robotics was close to uninvestable. Hardware carried high fixed costs and stubbornly high variable costs, the opposite of the near-zero marginal economics that made software compounding so attractive to venture capital. The skepticism was rational. What changed is not that the hardware got dramatically cheaper. What changed is that a learning-based approach to control, driven by data and compute rather than hand-written rules, started to do things that were previously impossible. That shift is best understood as a phase change rather than an incremental improvement, and it reframes the whole question of what a robotics company should actually be building.</p>
 
-      <p>The clearest way to see the shift is to separate the ingredients of a capable physical AI model. There are four: talent, compute, data, and evaluation. The first two are broadly understood and heavily funded. The interesting argument, and the one that determines who wins, is that data and evaluation are the real constraints in the physical world, and that both are far harder to scale than in the digital domain. Everything below follows from taking that claim seriously.</p>
+      <p>A capable physical AI model needs four inputs: talent, compute, data, and evaluation. Talent and compute are well understood and heavily funded, and neither is what separates the companies that will matter from the ones that will not. Data and evaluation are the binding constraints in the physical world, both are far harder to scale than their digital equivalents, and the teams that treat them as first-order engineering problems rather than downstream chores are the ones worth backing.</p>
 
       <h2>Why a model trained in one kitchen breaks in the next</h2>
 
-      <p>Start with the failure mode that motivates everything else. A large fraction of physical AI data today is collected in controlled environments that are effectively movie sets: warehouse-built kitchens and bedrooms designed to look like the real thing. Train a manipulation policy on demonstrations collected in one of those rooms and it will perform well in that exact room. Move it to a different kitchen, with different light, different counter height, different clutter, and it degrades sharply. The policy learned the set, not the task.</p>
+      <p>A large fraction of physical AI data today is collected in controlled environments that are effectively movie sets: warehouse-built kitchens and bedrooms designed to look like the real thing. Train a manipulation policy on demonstrations collected in one of those rooms and it will perform well in that exact room. Move it to a different kitchen, with different light, different counter height, different clutter, and it degrades sharply. The policy learned the set, not the task.</p>
 
       <p>The technical name for what is missing is diversity, and it is not a nice-to-have. It is the thing that produces generalization. This is a physical restatement of Rich Sutton's Bitter Lesson: general methods that scale with data and compute reliably beat clever, hand-engineered structure over the long run. In robotics, scaling with data specifically means scaling across the real distribution of environments the robot will actually encounter. You cannot get that distribution from a warehouse. You get it from the world, which is why the collection problem becomes a coverage problem rather than a volume problem alone.</p>
 
@@ -54,7 +54,6 @@
             #f3 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">The policy learns the set, not the task</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">One staged room against the distribution it will actually meet</text>
           <text x="170" y="86" text-anchor="middle" class="t sm">Trained on</text>
           <rect x="110" y="98" width="120" height="70" fill="#f5f5f5" stroke="#111111"/>
           <text x="170" y="128" text-anchor="middle" class="t nd">One room</text>
@@ -67,16 +66,15 @@
           <text x="518" y="190" text-anchor="middle" class="t sm">different light, counter height, clutter, every time</text>
           <text x="400" y="222" text-anchor="middle" class="t nd">Diversity is not a nice-to-have. It is the thing that produces generalisation.</text>
         </svg>
-        <figcaption>Train in the movie set and you get a policy that owns the movie set. Coverage of the real distribution, not volume alone, is what the collection problem is actually about.</figcaption>
       </figure>
 
       <h2>Three ways to feed a robot, and what each one costs</h2>
 
-      <p>There is no single source of robot training data. There are three, and the entire strategic game is understanding their distinct economics.</p>
+      <p>Robot training data comes from three sources, and each one carries a different cost structure, a different ceiling on scale, and a different way of failing.</p>
 
-      <p>The first is teleoperation, where a human directly drives the robot and the system records what happens. Its decisive advantage is the absence of an embodiment gap. Because the data is generated on the same hardware you deploy on, a policy trained from it has a high chance of transferring, and the problem becomes tractable in a way it otherwise would not be. This is the approach behind the low-cost bimanual work like Stanford's ALOHA and ACT, and it anchors large in-the-wild collections such as DROID. The catch is scale. Teleoperation is slow and expensive because a person has to be in the loop for every trajectory. The instructive counterexample is autonomous driving: the largest teleoperation dataset on earth belongs to the companies whose users are, in effect, driving robots on wheels all day. That works only because the robot is already useful enough that people pay to operate it. For almost every other robot, the machine cannot yet do anything valuable on its own, so someone has to pay for the data or design a game that makes people want to generate it.</p>
+      <p>The first is teleoperation, where a human directly drives the robot and the system records what happens. Its decisive advantage is the absence of an embodiment gap. Because the data is generated on the same hardware you deploy on, a policy trained from it has a high chance of transferring, and the problem becomes tractable in a way it otherwise would not be. This is the approach behind the low-cost bimanual work like Stanford's ALOHA and ACT, and it anchors large in-the-wild collections such as DROID. The catch is scale. Teleoperation is slow and expensive because a person has to be in the loop for every trajectory. Autonomous driving is where that economics inverts, because the largest teleoperation dataset on earth belongs to companies whose customers are, in effect, driving robots on wheels all day and paying for the privilege. That works only because the robot is already useful enough that people pay to operate it. For almost every other robot, the machine cannot yet do anything valuable on its own, so someone has to pay for the data or design a game that makes people want to generate it.</p>
 
-      <p>The second source is simulation. On paper it is the obvious answer, since you can run environments in parallel and compress time by orders of magnitude. In practice it is bounded by two things that are easy to underestimate. The first is the sim-to-real gap: simulation is a subset of reality, and policies that look perfect in the simulator can fail on contact with the world. Techniques like domain randomization were developed precisely to bridge this, and they carried real milestones such as OpenAI's dexterous in-hand manipulation. Simulation works best where the environment is static and the contact dynamics are simple. Humanoid locomotion and dancing, largely solved in simulation, are the poster children, because the ground is flat and nothing else is moving. It breaks down in dynamic, contact-rich tasks. Folding a shirt is the canonical hard case: the fabric deforms in response to your action, which creates a tight feedback loop that simulators model poorly. The second bound is less obvious and more important. The bottleneck in simulation is not compute, it is talent and allocation. The space of scenarios you could simulate is effectively infinite, while your compute is finite, so a skilled simulation researcher functions like a portfolio manager deciding where to spend it. The failure mode is not running out of compute. It is failing to simulate the scenario that would have mattered, because no one thought to spend compute on it. Note also that useful simulation targets physical fidelity, not visual polish. The goal is accurate dynamics, not a photorealistic game engine.</p>
+      <p>The second source is simulation. On paper it is the obvious answer, since you can run environments in parallel and compress time by orders of magnitude. In practice it is bounded by two things that are easy to underestimate. The first is the sim-to-real gap: simulation is a subset of reality, and policies that look perfect in the simulator can fail on contact with the world. Techniques like domain randomization were developed precisely to bridge this, and they carried real milestones such as OpenAI's dexterous in-hand manipulation. Simulation works best where the environment is static and the contact dynamics are simple. Humanoid locomotion and dancing, largely solved in simulation, are the poster children, because the ground is flat and nothing else is moving. It breaks down in dynamic, contact-rich tasks. Folding a shirt is the hard case: the fabric deforms in response to your action, which creates a tight feedback loop that simulators model poorly. The second bound is less obvious and more important. The bottleneck in simulation is not compute, it is talent and allocation. The space of scenarios you could simulate is effectively infinite, while your compute is finite, so a skilled simulation researcher functions like a portfolio manager deciding where to spend it. The failure mode is not running out of compute. It is failing to simulate the scenario that would have mattered, because no one thought to spend compute on it. Useful simulation targets physical fidelity rather than visual polish. The goal is accurate dynamics, not a photorealistic game engine.</p>
 
       <p>The third source is human data, meaning ordinary egocentric video from a camera worn on the head. It is cheap and effortless to collect, which is why there is enormous momentum behind it right now. Historically it was considered close to useless for robotics, because manipulation demands precise three-dimensional information. The difference between a successful grasp and a dropped object can be a millimetre, and flat video does not obviously provide that. What changed is computer vision. Recovering depth from a single camera has moved from marginal to reliable, through work like MiDaS and more recently Depth Anything V2, and adding a second camera for stereo improves it further. Combined with advances in hand and pose tracking, this makes egocentric video newly usable as a training signal. Large-scale egocentric datasets such as Meta's Ego4D and Ego-Exo4D existed for years before the field could really exploit them. Only recently have the surrounding tools caught up enough to turn that video into something a policy can learn from.</p>
 
@@ -92,7 +90,6 @@
             #f1 .axis{stroke:#999999;stroke-width:1}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">Three data sources, three different economics</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">Action fidelity against the scale you can realistically reach</text>
           <line x1="100" y1="86" x2="100" y2="286" class="axis"/>
           <line x1="100" y1="286" x2="762" y2="286" class="axis"/>
           <text x="94" y="92" text-anchor="end" class="t ax">high</text>
@@ -117,12 +114,11 @@
           <text x="635" y="259" text-anchor="end" class="t bd">Cheap, effortless, diverse.</text>
           <text x="635" y="273" text-anchor="end" class="t bd">Usable only now depth is solved.</text>
         </svg>
-        <figcaption>No source wins outright. Each buys scale by giving up fidelity, which is why the sophisticated move is co-training across all three rather than betting on one.</figcaption>
       </figure>
 
-      <h2>The point is to combine them, not to pick one</h2>
+      <h2>Co-training across all three beats betting on one</h2>
 
-      <p>None of these sources wins outright, and the sophisticated move is co-training across all three. You take the precise, embodiment-matched action signal that only teleoperation provides, and you fold in the breadth and generalization that comes from large volumes of egocentric or simulated data. The clearest public demonstration that mixing data sources pays off is Google DeepMind's Open X-Embodiment / RT-X effort, which pooled data across many robot types and showed positive transfer. A well-resourced lab treats its data strategy as a portfolio problem, the same way it treats compute and talent allocation, rather than a bet on a single modality.</p>
+      <p>None of these sources wins outright, and the strongest programmes co-train across all three. You take the precise, embodiment-matched action signal that only teleoperation provides, and you fold in the breadth and generalization that comes from large volumes of egocentric or simulated data. The clearest public demonstration that mixing data sources pays off is Google DeepMind's Open X-Embodiment / RT-X effort, which pooled data across many robot types and showed positive transfer. A well-resourced lab treats its data strategy as a portfolio problem, the same way it treats compute and talent allocation, rather than a bet on a single modality.</p>
 
       <h2>Robotics runs one step behind computer vision</h2>
 
@@ -130,7 +126,7 @@
 
       <h2>Evaluation is the constraint nobody budgets for</h2>
 
-      <p>The most underappreciated point is that evaluation in physical AI behaves nothing like benchmarking in the digital world. In digital AI, benchmarks matter enormously but they are not a bottleneck on iteration speed, because you can run an eval suite instantly and deterministically. In the physical world the logic inverts, and it inverts in a way that is deeply counterintuitive: you only get a clear positive signal from a failure. Consider an autonomous driving stack that completes a million miles with no intervention. That does not prove full autonomy, because the next mile could produce a crash. You cannot brute-force failure in the real world the way you brute-force a test set, so you are forced to wait for rare, expensive, sometimes dangerous events and learn from them. This makes real-world evaluation a first-order bottleneck on iteration speed, not a reporting formality. It is one of the strongest arguments for treating evaluation, alongside data, as something that has to be scaled deliberately rather than assumed.</p>
+      <p>Evaluation in physical AI behaves nothing like benchmarking in the digital world, and the difference sets the pace of everything else. In digital AI, benchmarks matter enormously but they are not a bottleneck on iteration speed, because you can run an eval suite instantly and deterministically. In the physical world the logic inverts, and it inverts in a way that is deeply counterintuitive: you only get a clear positive signal from a failure. An autonomous driving stack can complete a million miles without a single intervention and still not have demonstrated full autonomy, because the next mile could produce a crash. You cannot brute-force failure in the real world the way you brute-force a test set, so you are forced to wait for rare, expensive, sometimes dangerous events and learn from them. This makes real-world evaluation a first-order bottleneck on iteration speed, not a reporting formality. It is one of the strongest arguments for treating evaluation, alongside data, as something that has to be scaled deliberately rather than assumed.</p>
 
       
       <figure class="figure">
@@ -147,7 +143,6 @@
             #f4 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">A million clean miles prove nothing</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">In the physical world only the failure carries signal</text>
           <defs>
             <pattern id="f4p" width="12" height="9" patternUnits="userSpaceOnUse">
               <rect x="0" y="0" width="3" height="5" fill="#999999"/>
@@ -162,20 +157,19 @@
           <text x="400" y="208" text-anchor="middle" class="t bd">You cannot brute-force failure in the real world the way you brute-force a test set,</text>
           <text x="400" y="224" text-anchor="middle" class="t bd">so evaluation, not model capacity, sets the pace of iteration.</text>
         </svg>
-        <figcaption>Every mark on the left is a success, and together they still do not prove autonomy. The single mark on the right is the only one that teaches you anything.</figcaption>
       </figure>
 
       <h2>For large models, messiness is a feature</h2>
 
-      <p>There is a natural objection to any crowdsourced data strategy: if you let anyone contribute, how do you control quality? The answer requires redefining quality. A few years ago, quality meant clean framing and good lighting. For large models, the single most important property of a dataset is diversity, which means that a degree of messiness is not a defect to be filtered out but a signal to be captured. The world the robot will operate in is messy, so the training distribution should be too. This connects back to the reason egocentric video became valuable: data once dismissed as too noisy is now usable precisely because modern models can clean and extract signal from it, and because the diversity it carries is exactly what drives generalization. The implication for collection strategy is direct. You want contributions from many homes, kitchens, and cities, each adding its own slice of real-world variation, rather than a large volume of clean data from one controlled setting.</p>
+      <p>There is a natural objection to any crowdsourced data strategy: if you let anyone contribute, how do you control quality? Quality means something different at scale. A few years ago, quality meant clean framing and good lighting. For large models, the single most important property of a dataset is diversity, which means that a degree of messiness is not a defect to be filtered out but a signal to be captured. The world the robot will operate in is messy, so the training distribution should be too. This connects back to the reason egocentric video became valuable: data once dismissed as too noisy is now usable precisely because modern models can clean and extract signal from it, and because the diversity it carries is exactly what drives generalization. The implication for collection strategy is direct. You want contributions from many homes, kitchens, and cities, each adding its own slice of real-world variation, rather than a large volume of clean data from one controlled setting.</p>
 
       <h2>Why classical robotics could not do this, and learning can</h2>
 
-      <p>It is worth being precise about what actually changed. Classical robotics is explicit and rule-based, closer to conventional engineering: model the physics, specify the conditions, and the system behaves predictably. This works, and works extremely well, for tasks repeated thousands of times in controlled settings. An EV assembly line is the archetype, automated to the point that it can run in the dark. The limitation is that this approach depends on repeatability. The tasks that were out of reach are the ones with no repeatable instance. Folding the same shirt twice produces two slightly different sequences of deformation, which is trivial for a human and historically intractable for a programmed robot. Learning-based methods, trained on enough diverse demonstrations, are what finally started to crack this class of problem, and it is the reason the recent demos feel qualitatively different from the previous generation.</p>
+      <p>Classical robotics is explicit and rule-based, closer to conventional engineering: model the physics, specify the conditions, and the system behaves predictably. This works, and works extremely well, for tasks repeated thousands of times in controlled settings. An EV assembly line is the archetype, automated to the point that it can run in the dark. The limitation is that this approach depends on repeatability. The tasks that were out of reach are the ones with no repeatable instance. Folding the same shirt twice produces two slightly different sequences of deformation, which is trivial for a human and historically intractable for a programmed robot. Learning-based methods, trained on enough diverse demonstrations, are what finally started to crack this class of problem, and it is the reason the recent demos feel qualitatively different from the previous generation.</p>
 
       <h2>The research frontier is a set of competing bets</h2>
 
-      <p>There is no consensus yet on the single best way to train a capable physical model, and the honest position is that it is too early to call. Several serious directions are running in parallel.</p>
+      <p>There is no consensus on the best way to train a capable physical model, and no approach has yet proven decisive. Several serious directions are running in parallel.</p>
 
       <p>One is imitation learning and behavioral cloning, the teleoperation-hungry branch, where methods like ACT and Diffusion Policy learn control directly from human demonstrations. A second is the vision-language-action model, which repurposes the knowledge inside large vision-language models for control, exemplified by Google DeepMind's RT-2 and Physical Intelligence's π0. A third is world models, systems that learn a predictive model of environment dynamics and plan inside it, a lineage running from the original World Models work through DreamerV3, Meta's V-JEPA 2, and NVIDIA's Cosmos world foundation models aimed squarely at physical AI. A fourth is the bet that pure video generation, trained at sufficient scale, implicitly learns physics well enough to be useful downstream for control. That last claim is far from settled. Careful studies such as How Far is Video Generation from World Model: A Physical Law Perspective find that today's generative video models capture some regularities while still missing others, so the jury is out on whether photorealistic prediction alone yields reliable physical understanding. Well-funded labs hedge across these directions and lean on researcher taste, developed over years, to decide where to concentrate. That taste is currently doing a lot of the work that a settled theory eventually will.</p>
 
@@ -194,7 +188,6 @@
             #f5 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">Four bets, no consensus</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">No approach has proven decisive, so the serious labs hedge across all of them</text>
           <rect x="24" y="76" width="176" height="128" fill="#ffffff" stroke="#111111"/>
           <text x="112" y="100" text-anchor="middle" class="t nd">Imitation learning</text>
           <line x1="40" y1="110" x2="184" y2="110" stroke="#dddddd" stroke-width="1"/>
@@ -225,7 +218,6 @@
           <text x="688" y="190" text-anchor="middle" class="t sm">far from settled</text>
           <text x="400" y="232" text-anchor="middle" class="t bd">Researcher taste is currently doing the work that a settled theory eventually will.</text>
         </svg>
-        <figcaption>The fourth is drawn dashed for a reason: careful studies find today's generative video models capture some physical regularities while still missing others.</figcaption>
       </figure>
 
       <h2>Two constraints that shape the economics</h2>
@@ -244,7 +236,6 @@
             #f2 .axis2{stroke:#999999;stroke-width:1}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t2 ttl2">The cost curve of the last mile</text>
-          <text x="400" y="54" text-anchor="middle" class="t2 sub2">Cost per useful example as coverage of the real distribution grows</text>
           <line x1="100" y1="96" x2="100" y2="286" class="axis2"/>
           <line x1="100" y1="286" x2="762" y2="286" class="axis2"/>
           <text x="94" y="102" text-anchor="end" class="t2 ax2">high</text>
@@ -262,14 +253,13 @@
           <text x="576" y="260" class="t2 bd2">Rare edge cases. Egocentric video</text>
           <text x="576" y="274" class="t2 bd2">of a surgeon. Nearly unsourceable.</text>
         </svg>
-        <figcaption>The centralized collection effort exhausts the cheap data and then stalls. A network wide enough to reach the rare cases is the only thing that keeps climbing the curve.</figcaption>
       </figure>
 
       <h2>The open question underneath the technical one</h2>
 
       <p>The technical thesis leads to a strategic one. If diversity is what matters, and if the rare and expensive data is what will separate the next generation of models, then the collection problem is fundamentally a coordination problem at global scale. That is the case for crowdsourcing, and it is where a token-based incentive can do real work, by giving contributors a codified share in the value their data creates rather than relying on goodwill, the way open-source and non-profit efforts historically have. Early open datasets released in this spirit, including BitRobot's HIW-500, a large real-home humanoid teleoperation set released with Hugging Face and its open LeRobot ecosystem, are early evidence that community-scale collection can produce data researchers actually use.</p>
 
-      <p>The uncomfortable part is honest to state. Even if data collection and evaluation can be truly decentralized, the heaviest lifting, large-scale pre-training, still concentrates in a small number of well-capitalized labs, and the frontier is trending toward closed models rather than open ones. Crowdsourcing the inputs does not by itself guarantee that the resulting science stays open. That tension, between an open, participatory process for gathering the world's physical data and an increasingly closed frontier for the models that data feeds, is the real unresolved question. It is worth being clear-eyed that the current equilibrium favors concentration, and that widening participation in the inputs is a partial answer, not a complete one.</p>
+      <p>Even if data collection and evaluation can be truly decentralized, the heaviest lifting, large-scale pre-training, still concentrates in a small number of well-capitalized labs, and the frontier is trending toward closed models rather than open ones. Crowdsourcing the inputs does not by itself guarantee that the resulting science stays open. That tension, between an open, participatory process for gathering the world's physical data and an increasingly closed frontier for the models that data feeds, is the real unresolved question. The current equilibrium favours concentration, and widening participation in the inputs is a partial answer rather than a complete one.</p>
 
       <p>None of this warrants blind optimism. Job displacement in digital work is already visible, the pace of change now measured in weeks rather than quarters, and the field is full of impressive demos that have not yet proven durable real-world use. But the underlying direction is hard to argue with. Something on the order of half of global GDP involves moving physical things around, which is why serious capital will keep flowing into physical AI regardless of near-term hype cycles. <mark class="hl">The teams that understand the problem as a data and evaluation problem first, and a hardware or model-architecture problem second, are the ones positioned to compound as the field matures.</mark></p>
     </article>

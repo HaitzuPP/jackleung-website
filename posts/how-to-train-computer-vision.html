@@ -28,7 +28,7 @@
 
       <p>The model will not decide the winner. The founder of a robotics company I know argues the deciding constraint sits underneath it, in where the data has to be processed.</p>
 
-      <h2>Start with the data problem</h2>
+      <h2>Bandwidth, not architecture, sets the limit</h2>
 
       <p>The problem starts with a hard physical limit. You cannot pipe video from every camera, all day, to a data center and run a large model over it. The bandwidth does not exist, the bill is absurd, and the lag kills anything that has to act in the moment. The model therefore has to live where the camera lives, and in practice that means something tiny, on the order of a 19MB model running on the device itself.</p>
 
@@ -67,7 +67,6 @@
             #f3 .ar{stroke:#6a6a6a;stroke-width:1.3;fill:none}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">Two bets on what comes next</text>
-          <text x="400" y="54" text-anchor="middle" class="t sub">Both build a world model. Only one fits on the camera.</text>
           <line x1="400" y1="72" x2="400" y2="252" stroke="#dddddd" stroke-width="1"/>
           <text x="40" y="96" class="t hd">Predictive</text>
           <text x="40" y="114" class="t sm">the JEPA lineage</text>
@@ -92,7 +91,6 @@
           <text x="432" y="219" class="t bd">can watch them work.</text>
           <text x="432" y="243" class="t nd">The one you cannot afford on-device.</text>
         </svg>
-        <figcaption>The viral demos come from the expensive side. On a camera, predicting an abstract state beats rendering a picture you cannot afford to draw.</figcaption>
       </figure>
 
       <h2>The "deliberate Frankenstein"</h2>
@@ -111,7 +109,6 @@
             #f1 .cap{font-size:11.5px;fill:#6a6a6a}
           </style>
           <text x="400" y="34" text-anchor="middle" class="t ttl">One system, deliberately impure</text>
-          <text x="400" y="54" text-anchor="middle" class="t sm">A distilled reasoning model, a vision-language model and a detection model, bolted together</text>
           <!-- container -->
           <rect x="24" y="70" width="752" height="150" fill="#fafafa" stroke="#111111" stroke-width="1.2"/>
           <text x="400" y="90" text-anchor="middle" class="t cap">On-device · ~19MB · real time</text>
@@ -128,7 +125,6 @@
           </g>
           <text x="400" y="240" text-anchor="middle" class="t sm">≈10 custom primitives, each doing one narrow job</text>
         </svg>
-        <figcaption>An engineer's answer, not a researcher's. No single approach is good enough alone, so the parts that each earn their keep get assembled into one footprint small enough to run on the camera.</figcaption>
       </figure>
 
       <h2>Why the data layer is the durable position</h2>
@@ -175,7 +171,6 @@
           <text x="400" y="183" text-anchor="middle" class="t sm">compounds</text>
           <text x="400" y="199" text-anchor="middle" class="t sm">every cycle</text>
         </svg>
-        <figcaption>Access is won in the field, then compounds. The team that starts the loop first owns a data position a late, better model cannot buy its way into.</figcaption>
       </figure>
 
       <p>Vision may still be waiting for its GPT moment, the single recipe that turns everything after it into a scaling exercise. The winners will not be whoever finds that recipe; they will be whoever already owns the data pipeline it would need, and that position is taken by shipping rather than waiting.</p>
