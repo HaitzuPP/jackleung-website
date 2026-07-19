@@ -32,37 +32,6 @@
 
       <p>The encrypted messaging market treats the message body as the asset worth defending, which made sense when the adversary was a human reading mail. It makes much less sense against a model that never reads anything and only correlates. A provider that knows your address, your correspondents, the time of every exchange and the network you connected from can reconstruct most of what matters without decrypting a single word. Vitalik Buterin makes the same point in blunter terms: whoever holds the information holds the power, and the information that leaks by default is not the content.</p>
 
-      <figure class="figure">
-        <svg id="f1" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram contrasting the encrypted contents of a message against the four metadata fields that remain visible to the provider">
-          <style>
-            #f1 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            #f1 .ttl{font-size:17px;font-weight:700}
-            #f1 .sub{font-size:12.5px;fill:#6a6a6a}
-            #f1 .hd{font-size:15px;font-weight:700}
-            #f1 .nd{font-size:13.5px;font-weight:700}
-            #f1 .bd{font-size:12.5px;fill:#333333}
-            #f1 .sm{font-size:11.5px;fill:#6a6a6a}
-          </style>
-          <text x="400" y="34" text-anchor="middle" class="t ttl">What encryption actually covers</text>
-          <text x="24" y="84" class="t hd">The letter</text>
-          <rect x="24" y="94" width="560" height="46" fill="#111111"/>
-          <text x="304" y="123" text-anchor="middle" class="t nd" style="fill:#ffffff">Contents of the message</text>
-          <text x="600" y="114" class="t bd">Encrypted end to end.</text>
-          <text x="600" y="131" class="t sm">Solved, and commoditised.</text>
-          <text x="24" y="176" class="t hd">The envelope</text>
-          <rect x="24" y="186" width="176" height="46" fill="#ffffff" stroke="#111111"/>
-          <text x="112" y="215" text-anchor="middle" class="t nd">Your IP address</text>
-          <rect x="214" y="186" width="176" height="46" fill="#ffffff" stroke="#111111"/>
-          <text x="302" y="215" text-anchor="middle" class="t nd">Who you contacted</text>
-          <rect x="404" y="186" width="176" height="46" fill="#ffffff" stroke="#111111"/>
-          <text x="492" y="215" text-anchor="middle" class="t nd">When</text>
-          <rect x="594" y="186" width="176" height="46" fill="#ffffff" stroke="#111111"/>
-          <text x="682" y="215" text-anchor="middle" class="t nd">From where</text>
-          <text x="400" y="258" text-anchor="middle" class="t bd">Visible to the provider, and to anyone who can watch the link.</text>
-          <text x="400" y="280" text-anchor="middle" class="t sm">Against a correlation model this is frequently the more revealing half.</text>
-        </svg>
-      </figure>
-
       <h2>AI turned privacy from an ideology into a paid product</h2>
 
       <p>Privacy sold on principle never converted. It started converting when prompts became a logged asset class. A court ordering millions of ChatGPT conversations produced did more for the category than a decade of advocacy, because it converted an abstract risk into a discovery request. The response has been real: Venice reached unicorn status and Proton's Lumo passed ten million users. What almost none of it protects is the identity of the person asking. These products encrypt the prompt and leave exposed who is querying which model, from where, and how often, which for an agent operating on your behalf is the more sensitive fact.</p>
@@ -75,37 +44,9 @@
 
       <h2>The consumer market is a five-dollar contest</h2>
 
-      <p>Consumer privacy is a commoditised race to roughly five dollars a month, competing on server counts and streaming unblocks rather than on any property a privacy engineer would recognise. The decentralised cohort that tried to fix this on ideology lost badly: Nym and Orchid both drew down more than ninety-nine percent, not because the cryptography failed but because the demand never arrived. The clearest measure of that gap is that only about six percent of US adults use a data-removal service, set against a data-broker industry worth hundreds of billions. Demand is loud in surveys and thin in wallets, and that gap has killed every consumer privacy company that mistook stated preference for willingness to pay.</p>
+      <p>Consumer privacy is a commoditised race to roughly five dollars a month, competing on server counts and streaming unblocks rather than on any property a privacy engineer would recognise. The decentralised cohort that tried to fix this on ideology lost badly, and Nym and Orchid both drew down more than ninety-nine percent. The clearest measure of that gap is that only about six percent of US adults use a data-removal service, set against a data-broker industry worth hundreds of billions. Demand is loud in surveys and thin in wallets, and that gap has killed every consumer privacy company that mistook stated preference for willingness to pay.</p>
 
       <p>Grass is the exception, and it locates the money precisely. Grass worked by selling verifiable residential access and web data to businesses rather than shipping another consumer app, which is the same conclusion the incumbent market reached long ago. Residential access is a one-and-a-half to two billion dollar market, and Bright Data alone runs at roughly three hundred million in annual recurring revenue. The buyer is a company with a procurement process, not a consumer choosing between a VPN and a coffee.</p>
-
-      <figure class="figure">
-        <svg id="f2" viewBox="0 0 800 292" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two columns contrasting the business access market where demand paid against the consumer and token markets where it did not">
-          <style>
-            #f2 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            #f2 .ttl{font-size:17px;font-weight:700}
-            #f2 .sub{font-size:12.5px;fill:#6a6a6a}
-            #f2 .hd{font-size:15px;font-weight:700}
-            #f2 .big{font-size:26px;font-weight:700}
-            #f2 .bd{font-size:12.5px;fill:#333333}
-            #f2 .sm{font-size:11.5px;fill:#6a6a6a}
-          </style>
-          <text x="400" y="34" text-anchor="middle" class="t ttl">Two markets, one of which paid</text>
-          <line x1="400" y1="74" x2="400" y2="272" stroke="#dddddd" stroke-width="1"/>
-          <text x="40" y="98" class="t hd">Sold to businesses</text>
-          <text x="40" y="142" class="t big">$1.5&#8211;2B</text>
-          <text x="40" y="162" class="t sm">residential access market</text>
-          <text x="40" y="204" class="t big">~$300M</text>
-          <text x="40" y="224" class="t sm">Bright Data annual recurring revenue</text>
-          <text x="40" y="256" class="t bd">Verifiable access, bought on procurement.</text>
-          <text x="432" y="98" class="t hd">Sold to consumers</text>
-          <text x="432" y="142" class="t big">~$5</text>
-          <text x="432" y="162" class="t sm">per month, the commoditised VPN contest</text>
-          <text x="432" y="204" class="t big">&#8722;99%+</text>
-          <text x="432" y="224" class="t sm">token drawdown, Nym and Orchid</text>
-          <text x="432" y="256" class="t bd">Stated preference, never converted.</text>
-        </svg>
-      </figure>
 
       <h2>What the comparables actually prove</h2>
 
@@ -182,33 +123,6 @@
 
       <p>Residential IP sourcing is now under regulatory scrutiny, and buyers have started asking where the supply came from rather than accepting that it works. That question is difficult for any network that acquired its addresses by bundling consent into an unrelated installer, and straightforward for one built on opt-in supply with an audit trail. Consented, verifiable sourcing is moving from a marketing line to a purchasing criterion. Markets reorder on procurement rules more often than on technology.</p>
 
-      <figure class="figure">
-        <svg id="f3" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three stacked layers showing applications protected by encryption above an unserved network layer and the physical access layer beneath it">
-          <style>
-            #f3 .t{font-family:'Times New Roman',Times,Georgia,serif;fill:#111111}
-            #f3 .ttl{font-size:17px;font-weight:700}
-            #f3 .sub{font-size:12.5px;fill:#6a6a6a}
-            #f3 .lb{font-size:14.5px;font-weight:700}
-            #f3 .bd{font-size:12.5px;fill:#333333}
-            #f3 .sm{font-size:11.5px;fill:#6a6a6a}
-          </style>
-          <text x="400" y="34" text-anchor="middle" class="t ttl">The gap is underneath the apps</text>
-          <rect x="40" y="88" width="470" height="46" fill="#f5f5f5" stroke="#999999"/>
-          <text x="275" y="117" text-anchor="middle" class="t lb">Applications</text>
-          <text x="530" y="108" class="t bd">Signal, Proton, private AI.</text>
-          <text x="530" y="125" class="t sm">Encryption. Solved and commoditised.</text>
-          <rect x="40" y="144" width="470" height="46" fill="#111111"/>
-          <text x="275" y="173" text-anchor="middle" class="t lb" style="fill:#ffffff">The network layer</text>
-          <text x="530" y="164" class="t bd">Who, whom, when, from where.</text>
-          <text x="530" y="181" class="t sm">Unserved. The subject of this piece.</text>
-          <rect x="40" y="200" width="470" height="46" fill="#ffffff" stroke="#111111"/>
-          <text x="275" y="229" text-anchor="middle" class="t lb">Physical access</text>
-          <text x="530" y="220" class="t bd">Residential ingress and egress.</text>
-          <text x="530" y="237" class="t sm">Where censorship is actually enforced.</text>
-          <text x="400" y="278" text-anchor="middle" class="t bd">Encryption covers the top band. Everything the adversary actually uses sits below it.</text>
-        </svg>
-      </figure>
-
       <h2>What a network-layer answer requires</h2>
 
       <p>The specification is four requirements, and each one raises the cost of the next. Traffic exits through real residential addresses, because those stay authentic and unblockable when datacenter ranges get cut. Entry is decentralised and self-healing, rotating across many addresses so a censor blocking known entry points does not sever the network. Verification is mechanical rather than promised: each address is proven live, residential and performant, which converts trust our nodes into verify our nodes. Revenue comes from usage rather than emissions, because a network that needs token incentives to survive stops the day the incentives do.</p>
@@ -268,9 +182,15 @@
         </svg>
       </figure>
 
-      <h2>The honest objection</h2>
+      <h2>The purists raised the money and never found the users</h2>
 
-      <p>The bear case is the same one that buried the last cohort. Stated demand for privacy has never reliably converted into paid demand, and pointing at survey numbers or at authoritarian regimes does not by itself produce a customer with a purchase order. The business access market is real, but it is competitive and the incumbents are large and well distributed. Regulatory scrutiny of residential sourcing cuts in both directions: it favours networks built on consented supply, and it also raises the possibility that the category is regulated in ways that suit incumbents with compliance departments.</p>
+      <p>Take Nym as the example. It is the most cryptographically serious project the category has produced: a real mixnet with batching and cover traffic, the only design on this list that defeats timing analysis rather than merely hiding an IP address. It was funded accordingly, backed by Andreessen Horowitz, Polychain and Binance Labs, and it shipped what it promised. The token is down more than ninety-nine percent from its peak, and the reason is not that the cryptography failed. The cryptography worked. It cost seconds of latency, and no ordinary person will trade seconds of latency for a guarantee they cannot perceive.</p>
+
+      <p>Orchid raised roughly $48 million from Andreessen Horowitz and Sequoia to build a bandwidth marketplace with staking and per-packet payment. Mysterium ran an ICO on the same premise. Both put a wallet, a token and a funding step between a person and a working connection, and both were competing with a five-dollar product that opens and connects. Every one of them treated distribution as somebody else's problem, on the assumption that a sufficiently correct design would find its own users. None of them did.</p>
+
+      <p>Set that against what actually got bought. NordVPN offers weaker guarantees than any of them and runs $357 million of revenue on 1,800 employees. Proton, which is genuinely open source and audited, runs $134 million and grew by adding mail, drive and calendar rather than by adding cryptographic strength. The purists were right about the threat model and wrong about everything downstream of it. Correctness was sold to a market that was buying convenience.</p>
+
+      <p>The lesson for anyone building at the network layer is narrow and expensive to ignore. The bar is not a stronger guarantee than Nym managed. It is a guarantee that costs the user nothing to adopt: no wallet, no token, no bridge, and no perceptible latency. That constraint eliminates most of the architectures the category has tried, which is precisely why the position is still open. The same trap is also still open, and a team that ships proofs before it ships a product people will actually keep installed ends up exactly where this cohort did.</p>
 
       <p>The position is the asset, not the product. Content privacy is a crowded market for a solved problem. Access to the open internet is becoming a priced, contested input for humans and for agents, and the layer that decides reachability has no serious commercial owner. Sitting underneath the stack takes longer to build than competing inside it and is correspondingly harder to displace.</p>
 
@@ -299,6 +219,7 @@
           <span class="pfn-title">Robotics Data Problem</span>
         </a>
       </nav>
+
 
   </main>
   <script src="../subscribe.js"></script>
