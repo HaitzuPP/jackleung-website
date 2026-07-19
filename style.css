@@ -329,14 +329,58 @@ input:focus-visible {
    An 800-unit figure squeezed into a 327px phone renders its smallest labels
    at ~4.5px, which is unreadable. Hold a legible minimum width and let the
    figure scroll on its own axis; the caption stays pinned to the left edge. */
-@media (max-width: 700px) {
-  .figure {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .figure svg { min-width: 700px; }
-  .figure figcaption {
-    position: sticky;
-    left: 0;
-  }
+/* ---------- Figure zoom ----------
+   Figures always fit the column, so no page ever scrolls sideways.
+   Detail is opt-in: click or tap opens the figure full screen, where it
+   holds a legible minimum width and the reader can pan and pinch. */
+.figure svg { cursor: zoom-in; }
+
+.fig-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  background: rgba(17, 17, 17, 0.94);
+}
+.fig-zoom.is-open { display: flex; flex-direction: column; }
+.fig-zoom-bar {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0.9rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+.fig-zoom-close {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: none;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  padding: 0.3rem 0.85rem;
+  cursor: pointer;
+}
+.fig-zoom-close:hover { background: #ffffff; color: var(--ink); }
+.fig-zoom-body {
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 0.9rem 1.1rem;
+}
+.fig-zoom-body svg {
+  display: block;
+  margin: 0 auto;
+  width: 760px;
+  max-width: none;
+  height: auto;
+  cursor: default;
+  background: #ffffff;
+  border: none;
+  border-radius: 4px;
+}
+@media (min-width: 840px) {
+  .fig-zoom-body svg { width: min(94vw, 1400px); }
 }
