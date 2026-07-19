@@ -24,7 +24,7 @@
     </header>
 
     <article class="article">
-      <p>Language had it easy. One architecture won, and everything after was a scaling problem: more data, more compute, better answers. Computer vision never got that clean break. It has ten competing recipes and no champion, and not one of them can reliably walk into a scene it has never seen before and just work.</p>
+      <p>Language had it easy. One architecture won, and everything after was a scaling problem: more data, more compute, better answers. Computer vision never got that clean break, and it has ten competing recipes and no champion, not one of which can reliably walk into a scene it has never seen before and just work.</p>
 
       <p>The model will not decide the winner. The founder of a robotics company I know argues the deciding constraint sits underneath it, in where the data has to be processed.</p>
 
@@ -32,7 +32,7 @@
 
       <p>The problem starts with a hard physical limit. You cannot pipe video from every camera, all day, to a data center and run a large model over it. The bandwidth does not exist, the bill is absurd, and the lag kills anything that has to act in the moment. The model therefore has to live where the camera lives, and in practice that means something tiny, on the order of a 19MB model running on the device itself.</p>
 
-      <p>That constraint decides the design space. The question is not which architecture is most capable, it is which capable thing fits on a camera and answers in real time. <mark class="hl">Data does not just train the model; it dictates the architecture.</mark> The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
+      <p>That constraint decides the design space: the question is not which architecture is most capable but which capable thing fits on a camera and answers in real time. <mark class="hl">Data does not just train the model; it dictates the architecture.</mark> The place where the data has to be processed decides the shape of everything you are allowed to build.</p>
 
       <p>Most of the field treats architecture as the interesting decision and data as the input you shovel in. On-device vision inverts that order: the physics of where the data lives comes first, and the model is whatever fits inside it.</p>
 
@@ -51,7 +51,7 @@
 
       <h2>The "deliberate Frankenstein"</h2>
 
-      <p>His system is not one elegant model. He calls it a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job.</p>
+      <p>His system is not one elegant model but what he calls a deliberate Frankenstein: a distilled reasoning model, a conventional vision-language model, and a pure detection model, bolted together and running about ten custom primitives, each doing one narrow job.</p>
 
       <p>No single approach is good enough yet, so shipping means assembling the parts that each earn their keep. In a field still waiting for its one big idea, combining what works today beats holding out for what might work tomorrow.</p>
 
